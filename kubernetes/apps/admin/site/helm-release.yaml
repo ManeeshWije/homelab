@@ -22,19 +22,21 @@ spec:
       repository: maneeshwije/personal-website
       tag: latest
       pullPolicy: Always
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        ingressClassName: traefik
-        hosts:
-          - host: "${domain}"
-            paths:
-              - path: /
-                pathType: Prefix
+
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: 80
+    
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "web"
+        hosts:
+          - host: &host "{{ .Release.Name }}.{{ .Release.Namespace }}"
+            paths:
+              - path: /
+                pathType: Prefix
