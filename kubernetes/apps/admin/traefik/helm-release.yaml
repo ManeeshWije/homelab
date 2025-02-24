@@ -61,3 +61,7 @@ spec:
         mountPath: /etc/traefik
         type: configMap
 
+    service:
+      spec:
+        externalTrafficPolicy: Cluster
+        loadBalancerIP: "${traefik_load_balancer_ip}"
