@@ -25,18 +25,23 @@ spec:
 
     service:
       main:
+        type: NodePort
         ports:
           http:
-            port: 80
+            port: 8080
+            nodePort: 30080
     
-    ingress:
-      main:
+    ports:
+      http:
+        port: 8080
+    
+    probes:
+      liveness:
         enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "web"
-        hosts:
-          - host: &host "{{ .Release.Name }}.{{ .Release.Namespace }}"
-            paths:
-              - path: /
-                pathType: Prefix
+        path: /
+      readiness:
+        enabled: true
+        path: /
+      startup:
+        enabled: true
+        path: /
