@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: csp33
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://csp33.github.io/cert-manager-duckdns-webhook/
