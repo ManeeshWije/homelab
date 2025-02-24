@@ -20,11 +20,8 @@ spec:
   values:
     image:
       repository: maneeshwije/personal-website
-      tag: latest
+      tag: "sha256:c889172a13b49083f1830d079ce69a32c0bc9666cd961e70b203dedc815b3e09"
       pullPolicy: Always
-      platform:
-        architecture: arm64
-        os: linux
     ingress:
       main:
         enabled: true
