@@ -17,7 +17,7 @@ spec:
             config:
               apiTokenSecretRef:
                 name: duckdns-token-secret
-                key: "${domain_token}"
+                key: domain_token
         selector:
           dnsZones:
             - "${domain}"
