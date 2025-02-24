@@ -25,18 +25,16 @@ spec:
         enabled: false
     ports:
       web:
-        asDefault: false
-        redirections:
-          entryPoint:
-            enabled: false
+        exposedPort: 80  # Expose HTTP traffic on port 80
+        entryPoints:
+          - web
       websecure:
-        asDefault: true
-        tls:
-          enabled: true
-          options: "default"
+        exposedPort: 443  # Expose HTTPS traffic on port 443
+        entryPoints:
+          - websecure
       web-ext:
         asDefault: false
-        port: 9080
+        port: 9080  # External port, can be changed if needed
         exposedPort: 9080
         expose:
           default: true
@@ -53,7 +51,6 @@ spec:
           default: true
         tls:
           enabled: true
-          options: "default"
 
     additionalArguments:
       - "--providers.file.filename=/etc/traefik/dynamic.yml"
@@ -63,3 +60,4 @@ spec:
       - name: traefik-config
         mountPath: /etc/traefik
         type: configMap
+

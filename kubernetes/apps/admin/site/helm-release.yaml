@@ -34,7 +34,7 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         hosts:
-          - host: site.local
+          - host: 192.168.40.100
             paths:
               - path: /
                 pathType: Prefix
