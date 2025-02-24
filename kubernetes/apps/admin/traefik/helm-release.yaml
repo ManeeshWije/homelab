@@ -25,16 +25,16 @@ spec:
         enabled: false
     ports:
       web:
-        exposedPort: 80  # Expose HTTP traffic on port 80
+        exposedPort: 80
         entryPoints:
           - web
       websecure:
-        exposedPort: 443  # Expose HTTPS traffic on port 443
+        exposedPort: 443
         entryPoints:
           - websecure
       web-ext:
         asDefault: false
-        port: 9080  # External port, can be changed if needed
+        port: 9080
         exposedPort: 9080
         expose:
           default: true
