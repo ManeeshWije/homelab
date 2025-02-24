@@ -69,4 +69,9 @@ spec:
     service:
       spec:
         externalTrafficPolicy: Cluster
-        loadBalancerIP: "${traefik_load_balancer_ip}"
+        type: NodePort
+        ports:
+          web:
+            nodePort: 30705   # HTTP port
+          websecure:
+            nodePort: 32543   # HTTPS port
