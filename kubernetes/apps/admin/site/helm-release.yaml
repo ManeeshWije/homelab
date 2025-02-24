@@ -25,23 +25,16 @@ spec:
 
     service:
       main:
-        type: NodePort
         ports:
           http:
             port: 8080
-            nodePort: 30080
     
-    ports:
-      http:
-        port: 8080
-    
-    probes:
-      liveness:
+    ingress:
+      main:
         enabled: true
-        path: /
-      readiness:
-        enabled: true
-        path: /
-      startup:
-        enabled: true
-        path: /
+        ingressClassName: "traefik"
+        hosts:
+          - host: site.local
+            paths:
+              - path: /
+                pathType: Prefix
