@@ -21,8 +21,10 @@ spec:
     image:
       repository: maneeshwije/personal-website
       tag: latest
-    nodeSelector:
-      kubernetes.io/arch: arm64
+      pullPolicy: Always
+      platform:
+        architecture: arm64
+        os: linux
     ingress:
       main:
         enabled: true
