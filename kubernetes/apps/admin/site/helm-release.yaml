@@ -33,8 +33,7 @@ spec:
       main:
         enabled: true
         ingressClassName: "traefik"
-        hosts:
-          - host: 192.168.40.100
-            paths:
-              - path: /
-                pathType: Prefix
+        hosts: []
+        paths:
+          - path: /
+            pathType: Prefix
