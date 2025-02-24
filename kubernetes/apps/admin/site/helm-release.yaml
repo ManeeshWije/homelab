@@ -21,6 +21,8 @@ spec:
     image:
       repository: maneeshwije/personal-website
       tag: latest
+    nodeSelector:
+      kubernetes.io/arch: arm64
     ingress:
       main:
         enabled: true
@@ -36,6 +38,3 @@ spec:
         ports:
           http:
             port: 80
-
-    nodeSelector:
-      kubernetes.io/arch: arm64
