@@ -26,7 +26,7 @@ spec:
       main:
         enabled: true
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
           - host: "${domain}"
             paths:
