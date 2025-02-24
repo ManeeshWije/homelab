@@ -28,9 +28,7 @@ spec:
         asDefault: false
         redirections:
           entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+            enabled: false
       websecure:
         asDefault: true
         tls:
@@ -65,8 +63,3 @@ spec:
       - name: traefik-config
         mountPath: /etc/traefik
         type: configMap
-
-    service:
-      spec:
-        externalTrafficPolicy: Cluster
-        loadBalancerIP: "${traefik_load_balancer_ip}"
