@@ -10,11 +10,13 @@ data:
       middlewares:
         basic:
           basicAuth:
-            users: [""]
+            users: ["${traefik_basic_auth_credentials_hash}"]
+
         localOnly:
-          ipWhiteList:
+          iPAllowList:
             sourceRange:
               - "${network_subnet}"
+
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
