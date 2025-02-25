@@ -25,24 +25,22 @@ spec:
         enabled: false
     ports:
       web:
-        exposedPort: 80
-        entryPoints:
-          - web
+        asDefault: false
+        redirectTo:
+          port: websecure
       websecure:
-        exposedPort: 443
-        entryPoints:
-          - websecure
+        asDefault: true
+        tls:
+          enabled: true
+          options: "default"
       web-ext:
         asDefault: false
         port: 9080
         exposedPort: 9080
         expose:
           default: true
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+        redirectTo:
+          port: websecure # Since we change the ports in NAT
       websecure-ext:
         asDefault: false
         port: 9443
@@ -51,6 +49,7 @@ spec:
           default: true
         tls:
           enabled: true
+          options: "default"
 
     additionalArguments:
       - "--providers.file.filename=/etc/traefik/dynamic.yml"
