@@ -3,7 +3,7 @@
 # Used to generate the daemonset in this folder. Should only need this if there's an update
 # Sourcing the instructions from here https://kube-vip.io/docs/installation/daemonset/
 
-VIP=192.168.40.99
+VIP=192.168.40.49
 INTERFACE=wlan0
 KVVERSION=$(curl -sL https://api.github.com/repos/kube-vip/kube-vip/releases | jq -r ".[0].name")
 
