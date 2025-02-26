@@ -28,7 +28,7 @@ data:
           middlewares:
             - "localOnly@file"
         redirect-www:
-          rule: "HostRegexp(`www.${domain}`)"
+          rule: "Host(`www.${domain}`)"
           entrypoints: ["websecure-ext", "websecure"]
           middlewares:
             - "redirect-www-to-root@file"
