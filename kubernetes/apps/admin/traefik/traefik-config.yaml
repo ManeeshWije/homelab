@@ -15,6 +15,12 @@ data:
           ipWhiteList:
             sourceRange:
               - "${network_subnet}"
+        redirect-to-non-www:
+          redirectRegex:
+            regex: "^https?://www\\.(.*)"
+            replacement: "https://$1"
+            permanent: true
+
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
@@ -22,3 +28,16 @@ data:
           service: "api@internal"
           middlewares:
             - "localOnly@file"
+        
+        redirect-www-to-non-www:
+          rule: "Host(`www.${domain}`)"
+          entrypoints: ["web", "websecure"]
+          middlewares:
+            - "redirect-to-non-www@file"
+          service: "noop-service"
+
+      services:
+        noop-service:
+          loadBalancer:
+            servers:
+              - url: "http://127.0.0.1"  # Placeholder server for redirection
