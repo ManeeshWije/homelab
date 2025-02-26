@@ -8,6 +8,12 @@ data:
   dynamic.yml: |
     http:
       middlewares:
+        # Middleware to redirect www to non-www
+        redirectWWWToNonWWW:
+          redirectRegex:
+            regex: "^https?://www\.(.*)"
+            replacement: "https://$1"
+            permanent: true
         basic:
           basicAuth:
             users: [""]
@@ -15,11 +21,6 @@ data:
           ipWhiteList:
             sourceRange:
               - "${network_subnet}"
-        redirect-to-non-www:
-          redirectRegex:
-            regex: "^https?://www\\.(.*)"
-            replacement: "https://$1"
-            permanent: true
 
       routers:
         api:
@@ -28,16 +29,10 @@ data:
           service: "api@internal"
           middlewares:
             - "localOnly@file"
-        
-        redirect-www-to-non-www:
+
+        default-router:
           rule: "Host(`www.${domain}`)"
           entrypoints: ["web", "websecure"]
           middlewares:
-            - "redirect-to-non-www@file"
-          service: "noop-service"
-
-      services:
-        noop-service:
-          loadBalancer:
-            servers:
-              - url: "http://127.0.0.1"  # Placeholder server for redirection
+            - "redirectWWWToNonWWW@file"
+          service: "default-service"
