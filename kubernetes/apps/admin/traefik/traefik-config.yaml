@@ -17,8 +17,8 @@ data:
               - "${network_subnet}"
         redirect-to-non-www:
           redirectRegex:
-            regex: "^https?://www\\.(.*)"
-            replacement: "https://$1"
+            regex: "^https?://([a-zA-Z0-9-]+)\\.(${domain})"
+            replacement: "https://$2"
             permanent: true
 
       routers:
