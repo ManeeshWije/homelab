@@ -47,8 +47,8 @@ fi
 flux bootstrap github \
   --owner=ManeeshWije \
   --repository=homelab \
-  --path=kubernetes/bootstrap \
-  --branch=master
+  --path=kubernetes/flux-bootstrap \
+  --branch=main
 
 if [[ -z "${KEY_FP}" ]]; then
   read -rp "GPG Key Fingerprint: " KEY_FP
