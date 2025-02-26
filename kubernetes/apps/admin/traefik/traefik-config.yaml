@@ -17,8 +17,8 @@ data:
               - "${network_subnet}"
         redirect-to-non-www:
           redirectRegex:
-            regex: "^https?://([a-zA-Z0-9-]+)\\.(${domain})"
-            replacement: "https://$2"
+            regex: "^https?://www\\.(.*)"
+            replacement: "https://$1"
             permanent: true
 
       routers:
@@ -30,7 +30,7 @@ data:
             - "localOnly@file"
         
         redirect-www-to-non-www:
-          rule: "HostRegexp(`{subdomain:.+}.${domain}`)"
+          rule: "Host(`www.${domain}`)"
           entrypoints: ["web", "websecure", "web-ext", "websecure-ext"]
           middlewares:
             - "redirect-to-non-www@file"
