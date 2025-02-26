@@ -29,7 +29,7 @@ data:
             - "localOnly@file"
         redirect-www:
           rule: "HostRegexp(`www.${domain}`)"
-          entrypoints: ["websecure"]
+          entrypoints: ["websecure-ext", "websecure"]
           middlewares:
             - "redirect-www-to-root@file"
           service: "noop@internal"
