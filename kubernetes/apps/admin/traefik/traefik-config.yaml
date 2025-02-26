@@ -31,7 +31,7 @@ data:
         
         redirect-www-to-non-www:
           rule: "HostRegexp(`{subdomain:.+}.${domain}`)"
-          entrypoints: ["web", "websecure"]
+          entrypoints: ["web", "websecure", "web-ext", "websecure-ext"]
           middlewares:
             - "redirect-to-non-www@file"
           service: "noop-service"
