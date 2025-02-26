@@ -25,9 +25,3 @@ spec:
     env:
       API_KEY: "${ddns_cf_token}"
       ZONE: "${domain}"
-    
-    service:
-      main:
-        ports:
-          http:
-            port: 8080
