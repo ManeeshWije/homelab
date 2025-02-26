@@ -31,7 +31,7 @@ data:
             - "localOnly@file"
 
         default-router:
-          rule: "Host(`www.${domain}`)"
+          rule: "HostRegexp(`www.{subdomain:.+}.{domain}`) || Host(`www.{domain}`)"
           entrypoints: ["web", "websecure"]
           middlewares:
             - "redirectWWWToNonWWW@file"
