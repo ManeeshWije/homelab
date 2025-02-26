@@ -18,7 +18,7 @@ data:
         redirect-www-to-root:
           redirectRegex:
             regex: "^https?://www\\.(.*)"
-            replacement: "https://$1"
+            replacement: "https://$1/"
             permanent: true
       routers:
         api:
