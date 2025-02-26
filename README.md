@@ -1,0 +1,19 @@
+# Kubernetes Homelab
+
+> This homelab is heavily inspired by https://github.com/WolfeCub/home-ops
+
+### Hardware
+
+- Raspberry Pi 5 with PoE+NVME hat (master and worker node)
+- **Coming Soon**:
+    -   Pi 5 with SATA hat to act as a simple NAS
+    -   More Pi's to act as worker nodes
+
+### Software
+
+- [k3s](https://k3s.io/) is the lightweight kubernetes distribution
+- [flux2](https://fluxcd.io/) implements GitOps by continuously syncing the cluster state with the repository
+- [kube-vip](https://kube-vip.io/) provides VIP and load balancing capabilities
+- [traefik](https://traefik.io/traefik/) acts as both a reverse proxy and a LoadBalancer for handling ingress traffic
+- [cert-manager](https://cert-manager.io/) automatically provisions SSL certificates from Let’s Encrypt for secure service access
+- [sops](https://github.com/mozilla/sops) manages and encrypts cluster secrets
