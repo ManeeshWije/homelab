@@ -15,6 +15,11 @@ data:
           ipWhiteList:
             sourceRange:
               - "${network_subnet}"
+        redirect-www-to-root:
+          redirectRegex:
+            regex: "^https?://www\\.(.*)"
+            replacement: "https://$1"
+            permanent: true
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
@@ -22,3 +27,9 @@ data:
           service: "api@internal"
           middlewares:
             - "localOnly@file"
+        redirect-www:
+          rule: "HostRegexp(`www.{domain}`)"
+          entrypoints: ["websecure"]
+          middlewares:
+            - "redirect-www-to-root@file"
+          service: "noop@internal"
