@@ -10,5 +10,6 @@ configMapGenerator:
       - DATABASE_PUBLIC_URL=postgresql://${pg_username}:${pg_password}@postgresql.admin.svc.cluster.local:5432/watch-together
 secretGenerator:
   - name: watch-together-secrets
+    behavior: replace
     files:
       - secrets.sops.yaml
