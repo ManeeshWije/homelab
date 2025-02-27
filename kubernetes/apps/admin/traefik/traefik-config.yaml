@@ -15,10 +15,6 @@ data:
           ipAllowList:
             sourceRange:
               - "${network_subnet}"
-        sslHeaderMiddleware:
-          headers:
-            customRequestHeaders:
-              X-Forwarded-Proto: "https"
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
@@ -26,4 +22,3 @@ data:
           service: "api@internal"
           middlewares:
             - "localOnly@file"
-            - "sslHeaderMiddleware@file"
