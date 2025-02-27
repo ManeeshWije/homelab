@@ -1,0 +1,6 @@
+- For Pi's, k3sup needs these flags set inside `/boot/firmware/cmdline.txt`
+  - cgroup_enable=cpuset
+  - cgroup_memory=1
+  - cgroup_enable=memory
+- Since we are also using NVME hats, we should add this flag inside `/boot/firmware/config.txt`
+  - dtparam=pciex1_gen=3
