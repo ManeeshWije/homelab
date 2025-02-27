@@ -34,10 +34,9 @@ spec:
     auth:
       enablePostgresUser: true
       username: "${pg_username}"
-      password: "${pg_password}"
+      password: "${pg_user_password}"
+      postgresPassword: "${pg_password}"
       database: "maindb"
-      additionalDatabases:
-        - "watch-together"
     service:
       type: ClusterIP
       ports:
