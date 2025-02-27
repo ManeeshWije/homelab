@@ -40,16 +40,21 @@ spec:
             port: 8080
 
     env:
-      - name: DATABASE_PUBLIC_URL
+      - name: AWS_URL
         valueFrom:
           secretKeyRef:
             name: watch-together-secrets
-            key: DATABASE_PUBLIC_URL
+            key: AWS_URL
       - name: AWS_ACCESS_KEY_ID
         valueFrom:
           secretKeyRef:
             name: watch-together-secrets
             key: AWS_ACCESS_KEY_ID
+      - name: AWS_REGION
+        valueFrom:
+          secretKeyRef:
+            name: watch-together-secrets
+            key: AWS_REGION
       - name: AWS_SECRET_ACCESS_KEY
         valueFrom:
           secretKeyRef:
@@ -60,6 +65,11 @@ spec:
           secretKeyRef:
             name: watch-together-secrets
             key: AWS_S3_BUCKET
+      - name: DATABASE_PUBLIC_URL
+        valueFrom:
+          secretKeyRef:
+            name: watch-together-secrets
+            key: DATABASE_PUBLIC_URL
       - name: GOOGLE_CLIENT_ID
         valueFrom:
           secretKeyRef:
