@@ -12,7 +12,7 @@ data:
           basicAuth:
             users: [""]
         localOnly:
-          ipWhiteList:
+          ipAllowList:
             sourceRange:
               - "${network_subnet}"
       routers:
