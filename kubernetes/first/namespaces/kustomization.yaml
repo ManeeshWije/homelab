@@ -5,3 +5,4 @@ resources:
   - admin.yaml
   - cert-manager.yaml
   - longhorn-system.yaml
+  - projects.yaml
