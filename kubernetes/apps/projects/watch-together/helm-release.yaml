@@ -1,0 +1,44 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: watch-together
+  namespace: projects
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: maneeshwije/watch-together
+      tag: latest
+      pullPolicy: Always
+    
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
+        hosts:
+          - host: "watch.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+
+    envFrom:
+      - secretRef:
+          name: watch-together-secrets
