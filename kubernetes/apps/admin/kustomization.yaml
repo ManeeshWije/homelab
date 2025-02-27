@@ -5,4 +5,4 @@ resources:
   - site
   - traefik
   - cloudflare-ddns
-  - postgresql
+  # - postgresql
