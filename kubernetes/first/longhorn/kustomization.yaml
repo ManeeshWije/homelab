@@ -2,6 +2,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - admin.yaml
-  - cert-manager.yaml
-  - longhorn-system.yaml
+  - helm-release.yaml
+  - secret.sops.yaml
+  - middleware.yaml

@@ -1,0 +1,41 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: longhorn
+      version: 1.8.0
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+        namespace: flux-system
+      interval: 5m
+  values:
+    ingress:
+      enabled: true
+      host: "longhorn.${domain}"
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: "localOnly@file,longhorn-system-svc-longhorn-headers@kubernetescrd"
+
+    persistence:
+      reclaimPolicy: Retain
+
+    # CHANGE THIS TO NFS LATER
+    # defaultSettings:
+    #   backupTarget: s3://longhorn-backups@us-east-1/
+    #   backupTargetCredentialSecret: minio-credentials
+    #   backupConcurrentLimit: 1
+    #   concurrentAutomaticEngineUpgradePerNodeLimit: 1
+
+    csi:
+      kubeletRootDir: /var/lib/kubelet
+
+    longhornUI:
+      replicas: 1
