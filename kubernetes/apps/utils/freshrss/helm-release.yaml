@@ -23,6 +23,8 @@ spec:
       tag: latest
       pullPolicy: Always
     ingress:
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
       main:
         enabled: true
         hosts:
