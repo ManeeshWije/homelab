@@ -7,6 +7,9 @@
 - Raspberry Pi 5 with PoE+NVME hat (master and worker node)
 - **Coming Soon**:
     -   Pi 5 with SATA hat to act as a simple NAS
+        - OpenMediaVault
+        - Rsync for mirroring
+        - Syncthing
     -   More Pi's to act as worker nodes
 
 ### Software
