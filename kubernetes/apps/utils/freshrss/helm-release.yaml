@@ -41,10 +41,5 @@ spec:
       config:
         enabled: true
         existingClaim: freshrss-config
-      extensions:
-        enabled: true
-        existingClaim: freshrss-extensions
-        globalMounts:
-          - path: /var/www/FreshRSS/extensions/
     env:
       TZ: America/Toronto
