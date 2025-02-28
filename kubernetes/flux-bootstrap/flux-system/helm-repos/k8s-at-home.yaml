@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: bitnami
+  name: k8s-at-home
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://charts.bitnami.com/bitnami
-  timeout: 10m
+  url: https://k8s-at-home.com/charts/
+  timeout: 3m
