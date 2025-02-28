@@ -23,10 +23,10 @@ spec:
       tag: latest
       pullPolicy: Always
     ingress:
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
       main:
         enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
         hosts:
           - host: "freshrss.${domain}"
             paths:
