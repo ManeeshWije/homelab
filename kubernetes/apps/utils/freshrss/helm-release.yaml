@@ -33,11 +33,13 @@ spec:
     service:
       main:
         ports:
-          http:
+          https:
             port: 8084
     persistence:
       config:
         enabled: true
         existingClaim: freshrss-config
     env:
+      PUID: 1000
+      PGID: 1000
       TZ: America/Toronto
