@@ -6,3 +6,4 @@ resources:
   - cert-manager.yaml
   - longhorn-system.yaml
   - projects.yaml
+  - utils.yaml
