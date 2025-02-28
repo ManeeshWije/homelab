@@ -34,7 +34,7 @@ spec:
       main:
         ports:
           http:
-            port: 8084
+            port: 80
     persistence:
       config:
         enabled: true
