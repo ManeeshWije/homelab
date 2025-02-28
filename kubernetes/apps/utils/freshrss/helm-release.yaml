@@ -26,7 +26,7 @@ spec:
       main:
         enabled: true
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.middlewares: "localOnly@file"
         hosts:
           - host: "freshrss.${domain}"
             paths:
