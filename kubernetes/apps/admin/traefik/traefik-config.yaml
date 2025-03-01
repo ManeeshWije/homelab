@@ -11,3 +11,8 @@ data:
         basic:
           basicAuth:
             users: [""]
+      routers:
+        api:
+          rule: "Host(`traefik.${domain}`)"
+          entrypoints: ["websecure"]
+          service: "api@internal"
