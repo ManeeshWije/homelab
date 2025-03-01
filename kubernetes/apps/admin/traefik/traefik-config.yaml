@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,21 +10,7 @@ data:
       middlewares:
         basic:
           basicAuth:
-            users: [""]
-        redirect-www:
-          redirectRegex:
-            regex: "^https?://www\\.(.*)"
-            replacement: "https://$1"
-            permanent: true
-      entryPoints:
-        websecure:
-          http:
-            middlewares:
-              - redirect-www
-        websecure-ext:
-          http:
-            middlewares:
-              - redirect-www
+            users: ["${traefik_basic_auth_credentials_hash}"]
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
