@@ -28,6 +28,7 @@ spec:
         enabled: true
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
+          traefik.ingress.kubernetes.io/router.middlewares: admin-redirect-www@kubernetescrd
         hosts:
           - host: "${domain}"
             paths:
