@@ -4,3 +4,4 @@
   - cgroup_enable=memory
 - Since we are also using NVME hats, we should add this flag inside `/boot/firmware/config.txt`
   - dtparam=pciex1_gen=3
+- If using wireless and router does auto band switching from 2.4ghz to 5ghz, make sure you edit NetworkManager settings to prefer one
