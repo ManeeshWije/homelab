@@ -23,6 +23,9 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
+      middlewares:
+        - name: redirect-www-to-root
+          namespace: admin
     ports:
       web:
         redirections:
