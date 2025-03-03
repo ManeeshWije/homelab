@@ -6,6 +6,6 @@ metadata:
   namespace: admin
 spec:
   redirectRegex:
-    regex: "^https://www\.(.*)"
+    regex: "^https://www\\.(.*)"
     replacement: "https://$1"
     permanent: true
