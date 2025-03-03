@@ -9,7 +9,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: "HostRegexp(`www.{subdomain:.+}.${domain}.com`) || Host(`www.${domain}.com`)"
+    - match: "HostRegexp(`www.{subdomain:.+}.${domain}.com`) || HostRegexp(`www.${domain}.com`)"
       kind: Rule
       services:
         - name: api@internal
