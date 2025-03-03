@@ -1,0 +1,18 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: redirect-www-to-root-route
+  namespace: admin
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: "HostRegexp(`www.{subdomain:.+}.${domain}.com`)"
+      kind: Rule
+      services:
+        - name: api@internal
+          port: 80
+      middlewares:
+        - name: redirect-www-to-root
