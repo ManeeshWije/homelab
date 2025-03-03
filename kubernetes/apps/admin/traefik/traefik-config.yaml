@@ -11,6 +11,20 @@ data:
         basic:
           basicAuth:
             users: ["${traefik_basic_auth_credentials_hash}"]
+        redirect-www:
+          redirectRegex:
+            regex: "^https?://www\\.(.*)"
+            replacement: "https://$1"
+            permanent: true
+      entryPoints:
+        websecure:
+          http:
+            middlewares:
+              - redirect-www
+        websecure-ext:
+          http:
+            middlewares:
+              - redirect-www
       routers:
         api:
           rule: "Host(`traefik.${domain}`)"
