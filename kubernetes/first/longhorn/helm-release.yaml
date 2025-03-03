@@ -22,7 +22,7 @@ spec:
       enabled: true
       host: "longhorn.${domain}"
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: "localOnly@file,longhorn-system-svc-longhorn-headers@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.middlewares: "longhorn-system-svc-longhorn-headers@kubernetescrd"
 
     persistence:
       reclaimPolicy: Retain
