@@ -23,9 +23,6 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
-      middlewares:
-        - name: redirect-www-to-root
-          namespace: admin
     ports:
       web:
         redirections:
@@ -38,6 +35,8 @@ spec:
         tls:
           enabled: true
           options: "default"
+        middlewares: 
+          - admin-redirect-www-to-root@kubernetescrd
       web-ext:
         asDefault: false
         port: 9080
