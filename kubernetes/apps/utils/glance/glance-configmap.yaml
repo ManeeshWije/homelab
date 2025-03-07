@@ -13,9 +13,6 @@ data:
             widgets:
               - type: clock
                 hour-format: 24h
-                timezones:
-                  - timezone: America/Toronto
-                    label: EST
               - type: calendar
               - type: monitor
                 cache: 10m
@@ -52,12 +49,20 @@ data:
                 groups:
                   - title: General
                     links:
-                      - title: FreshRSS
-                        url: https://freshrss.${domain}
+                      - title: Proton Mail
+                        url: https://mail.proton.me/u/0/inbox
                         same-tab: true
                         hide-arrow: true
-                      - title: ProtonMail
-                        url: https://mail.proton.me/u/0/inbox
+                      - title: Proton Drive
+                        url: https://drive.proton.me
+                        same-tab: true
+                        hide-arrow: true
+                      - title: Proton Calendar
+                        url: https://calendar.proton.me/u/0/
+                        same-tab: true
+                        hide-arrow: true
+                      - title: FreshRSS
+                        url: https://freshrss.${domain}
                         same-tab: true
                         hide-arrow: true
                       - title: Github
@@ -85,9 +90,9 @@ data:
                 location: Milton, Canada
               - type: markets
                 markets:
-                  - symbol: XEQT
+                  - symbol: XEQT.TO
                     name: iShares Core Equity ETF
-                  - symbol: BTCC.B
+                  - symbol: BTCC-B.TO
                     name: Bitcoin ETF CAD
                   - symbol: AMD
                     name: Advanced Micro Devices Inc.
