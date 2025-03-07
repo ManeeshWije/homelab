@@ -1,0 +1,100 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: glance-configmap
+  namespace: utils
+data:
+  glance.yml: |
+    pages:
+      - name: Home
+        columns:
+          - size: small
+            widgets:
+              - type: clock
+                hour-format: 24h
+                timezones:
+                  - timezone: America/Toronto
+                    label: EST
+              - type: calendar
+              - type: monitor
+                cache: 10m
+                title: Services
+                sites:
+                  - title: wijeproject
+                    icon: si:wijeproject
+                    url: https://${domain}
+                    check-url: http://site.projects.svc.cluster.local:8080
+                    same-tab: true
+                  - title: watch-together
+                    icon: si:watch-together
+                    url: https://watch.${domain}
+                    check-url: http://watch-together.projects.svc.cluster.local:8080
+                    same-tab: true
+                  - title: freshrss
+                    icon: si:freshrss
+                    url: https://freshrss.${domain}
+                    check-url: http://freshrss.utils.svc.cluster.local:80
+                    same-tab: true
+
+          - size: full
+            widgets:
+              - type: search
+                search-engine: duckduckgo
+                bangs:
+                  - title: YouTube
+                    shortcut: "!yt"
+                    url: https://www.youtube.com/results?search_query={QUERY}
+                  - title: Amazon
+                    shortcut: "!am"
+                    url: https://www.amazon.com/s?k={QUERY}
+              - type: bookmarks
+                groups:
+                  - title: General
+                    links:
+                      - title: FreshRSS
+                        url: https://freshrss.${domain}
+                        same-tab: true
+                        hide-arrow: true
+                      - title: ProtonMail
+                        url: https://mail.proton.me/u/0/inbox
+                        same-tab: true
+                        hide-arrow: true
+                      - title: Github
+                        url: https://github.com/
+                        same-tab: true
+                        hide-arrow: true
+                  - title: Local
+                    links:
+                      - title: Kubewall
+                        url: https://kubwall.${domain}
+                        same-tab: true
+                        hide-arrow: true
+                      - title: Traefik
+                        url: https://traefik.${domain}
+                        same-tab: true
+                        hide-arrow: true
+                      - title: Longhorn
+                        url: https://longhorn.${domain}
+                        same-tab: true
+                        hide-arrow: true
+
+          - size: small
+            widgets:
+              - type: weather
+                location: Milton, Canada
+              - type: markets
+                markets:
+                  - symbol: XEQT
+                    name: iShares Core Equity ETF
+                  - symbol: BTCC.B
+                    name: Bitcoin ETF CAD
+                  - symbol: AMD
+                    name: Advanced Micro Devices Inc.
+              - type: releases
+                cache: 1d
+                repositories:
+                  - glanceapp/glance
+                  - immich-app/immich
+                  - syncthing/syncthing
+                  - neovim/neovim
