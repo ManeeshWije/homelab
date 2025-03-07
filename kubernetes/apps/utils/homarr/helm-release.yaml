@@ -36,7 +36,6 @@ spec:
                   identifier: main
     service:
       main:
-        controller: main
         ports:
           http:
             port: 7575
