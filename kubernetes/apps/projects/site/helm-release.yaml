@@ -18,10 +18,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: maneeshwije/personal-website
-      tag: latest
-      pullPolicy: Always
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: maneeshwije/personal-website
+              tag: latest
+              pullPolicy: Always
     
     ingress:
       main:
@@ -37,8 +41,11 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  identifier: main
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8080
