@@ -30,8 +30,12 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
     service:
       main:
+        controller: true
         ports:
           http:
             port: 80
