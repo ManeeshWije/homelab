@@ -7,9 +7,8 @@
 - Raspberry Pi 5 with PoE+NVME hat (master and worker node)
 - **Coming Soon**:
     -   Pi 5 with SATA hat to act as a simple NAS
-        - OpenMediaVault
-        - Rsync for mirroring
-        - Syncthing
+        - OpenMediaVault running ZFS (via plugin)
+        - Add to existing Syncthing network
     -   More Pi's to act as worker nodes
 
 ### Software
@@ -21,3 +20,4 @@
 - [Traefik](https://traefik.io/traefik/) acts as both a reverse proxy and a LoadBalancer for handling ingress traffic
 - [cert-manager](https://cert-manager.io/) automatically provisions SSL certificates from Let’s Encrypt for secure service access
 - [SOPS](https://github.com/mozilla/sops) manages and encrypts cluster secrets
+- [renovate](https://github.com/renovatebot/renovate) automatically creates PR's for version bumps and other chores
