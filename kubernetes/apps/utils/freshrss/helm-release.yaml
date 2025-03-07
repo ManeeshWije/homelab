@@ -25,6 +25,7 @@ spec:
             image:
               repository: linuxserver/freshrss
               tag: latest
+              pullPolicy: Always
     ingress:
       main:
         enabled: true
