@@ -25,6 +25,52 @@ spec:
             image:
               repository: maneeshwije/watch-together
               tag: latest
+            env:
+              - name: AWS_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: AWS_URL
+              - name: AWS_ACCESS_KEY_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: AWS_ACCESS_KEY_ID
+              - name: AWS_REGION
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: AWS_REGION
+              - name: AWS_SECRET_ACCESS_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: AWS_SECRET_ACCESS_KEY
+              - name: AWS_S3_BUCKET
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: AWS_S3_BUCKET
+              - name: DATABASE_PUBLIC_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: DATABASE_PUBLIC_URL
+              - name: GOOGLE_CLIENT_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: GOOGLE_CLIENT_ID
+              - name: GOOGLE_CLIENT_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: GOOGLE_CLIENT_SECRET
+              - name: GOOGLE_REDIRECT_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: watch-together-secrets
+                    key: GOOGLE_REDIRECT_URL
     ingress:
       main:
         enabled: true
@@ -44,49 +90,3 @@ spec:
           http:
             port: 8080
 
-    env:
-      - name: AWS_URL
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: AWS_URL
-      - name: AWS_ACCESS_KEY_ID
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: AWS_ACCESS_KEY_ID
-      - name: AWS_REGION
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: AWS_REGION
-      - name: AWS_SECRET_ACCESS_KEY
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: AWS_SECRET_ACCESS_KEY
-      - name: AWS_S3_BUCKET
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: AWS_S3_BUCKET
-      - name: DATABASE_PUBLIC_URL
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: DATABASE_PUBLIC_URL
-      - name: GOOGLE_CLIENT_ID
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: GOOGLE_CLIENT_ID
-      - name: GOOGLE_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: GOOGLE_CLIENT_SECRET
-      - name: GOOGLE_REDIRECT_URL
-        valueFrom:
-          secretKeyRef:
-            name: watch-together-secrets
-            key: GOOGLE_REDIRECT_URL
