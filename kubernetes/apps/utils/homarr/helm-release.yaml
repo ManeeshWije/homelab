@@ -31,10 +31,11 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  identifier: main
+                  name: main
+                  port: http
     service:
       main:
-        controller: main
+        controller: deployment
         ports:
           http:
             port: 80
