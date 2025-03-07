@@ -37,6 +37,8 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  identifier: main
           - host: "www.${domain}"
             paths:
               - path: /

@@ -18,11 +18,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: maneeshwije/watch-together
-      tag: latest
-      pullPolicy: Always
-    
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: maneeshwije/watch-together
+              tag: latest
+              pullPolicy: Always
     ingress:
       main:
         enabled: true
@@ -33,8 +36,11 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  identifier: main
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8080
