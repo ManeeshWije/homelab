@@ -11,4 +11,3 @@ resources:
   - jetstack.yaml
   - bitnami.yaml
   - k8s-at-home.yaml
-  - homarr.yaml
