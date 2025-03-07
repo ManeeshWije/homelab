@@ -25,7 +25,6 @@ spec:
             image:
               repository: maneeshwije/watch-together
               tag: latest
-              pullPolicy: Always
     ingress:
       main:
         enabled: true
