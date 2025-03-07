@@ -25,7 +25,6 @@ spec:
             image:
               repository: maneeshwije/personal-website
               tag: latest
-              pullPolicy: Always
     
     ingress:
       main:
