@@ -21,12 +21,12 @@ data:
                   - title: wijeproject
                     icon: si:wijeproject
                     url: https://${domain}
-                    check-url: http://site.projects.svc.cluster.local:8080
+                    check-url: https://wijeproject.com
                     same-tab: true
                   - title: watch-together
                     icon: si:watch-together
                     url: https://watch.${domain}
-                    check-url: https://wijeproject.com
+                    check-url: http://watch-together.projects.svc.cluster.local:80
                     same-tab: true
                   - title: freshrss
                     icon: si:freshrss
@@ -59,10 +59,6 @@ data:
                         hide-arrow: true
                       - title: Proton Calendar
                         url: https://calendar.proton.me/u/0/
-                        same-tab: true
-                        hide-arrow: true
-                      - title: FreshRSS
-                        url: https://freshrss.${domain}
                         same-tab: true
                         hide-arrow: true
                       - title: Github
