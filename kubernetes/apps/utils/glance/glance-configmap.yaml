@@ -69,7 +69,7 @@ data:
                         url: https://github.com/
                         same-tab: true
                         hide-arrow: true
-                  - title: Local
+                  - title: Admin
                     links:
                       - title: Kubewall
                         url: https://kubwall.${domain}
@@ -81,6 +81,10 @@ data:
                         hide-arrow: true
                       - title: Longhorn
                         url: https://longhorn.${domain}
+                        same-tab: true
+                        hide-arrow: true
+                      - title: Capacitor
+                        url: https://capacitor.${domain}
                         same-tab: true
                         hide-arrow: true
 
