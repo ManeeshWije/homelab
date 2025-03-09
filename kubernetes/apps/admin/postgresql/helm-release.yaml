@@ -37,7 +37,3 @@ spec:
       password: "${pg_user_password}"
       postgresPassword: "${pg_password}"
       database: "maindb"
-    service:
-      type: ClusterIP
-      ports:
-        postgresql: 5432
