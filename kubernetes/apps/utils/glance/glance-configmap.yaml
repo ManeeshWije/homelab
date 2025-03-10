@@ -83,6 +83,10 @@ data:
                         url: https://capacitor.${domain}
                         same-tab: true
                         hide-arrow: true
+                      - title: Renovate
+                        url: https://developer.mend.io/github/ManeeshWije
+                        same-tab: true
+                        hide-arrow: true
 
           - size: small
             widgets:
