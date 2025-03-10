@@ -1,0 +1,115 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authelia
+  namespace: admin
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: authelia
+      version: 0.9.16
+      sourceRef:
+        kind: HelmRepository
+        name: authelia
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: authelia/authelia
+      tag: 4.38.19
+    pod:
+      kind: Deployment
+      strategy:
+        type: Recreate
+      env:
+        - name: TZ
+          value: America/Toronto
+
+      extraVolumeMounts:
+        - name: authelia-users
+          mountPath: /config
+        - name: authelia-persist
+          mountPath: /data
+
+      extraVolumes:
+        - name: authelia-users
+          configMap:
+            name: authelia-users
+            items:
+              - key: users_database.yml
+                path: users_database.yml
+        - name: authelia-persist
+          persistentVolumeClaim:
+            claimName: authelia-data
+
+      securityContext:
+        container:
+          fsGroup: 568
+
+    domain: "${domain}"
+
+    ingress:
+      enabled: true
+      subdomain: login
+      tls:
+        enabled: false
+
+      traefikCRD:
+        enabled: true
+        entryPoints: [websecure-ext, websecure]
+
+    configMap:
+      totp:
+        issuer: "${domain}"
+
+      authentication_backend:
+        disable_password_reset: true
+        ldap:
+          enabled: false
+        file:
+          enabled: true
+          path: /config/users_database.yml
+
+      access_control:
+        default_policy: deny
+        rules:
+          ## Rules applied to everyone
+          - domain: "*.${domain}"
+            policy: two_factor
+
+
+      session:
+        cookies:
+          - domain: "${domain}"
+            subdomain: login
+            default_redirection_url: "https://${domain}"
+        redis:
+          enabled: false
+
+      storage:
+        encryption_key:
+          value: "${authelia_storage_encryption_key}"
+        local:
+          enabled: true
+          path: /data/db.sqlite3
+        postgres:
+          enabled: false
+
+      notifier:
+        smtp:
+          enabled: true
+          enabledSecret: true
+          address: 'smtp://${authelia_smtp_server}:587'
+          sender: "Authelia <${authelia_smtp_email}>"
+          username: ${authelia_smtp_email}
+          timeout: '15 seconds'
+          password:
+            value: ${authelia_smtp_password}
+
+    secret:
+      jwt:
+        value: ${authelia_jwt_secret}

@@ -7,3 +7,4 @@ resources:
   - postgresql
   - kubewall
   - capacitor
+  - authelia
