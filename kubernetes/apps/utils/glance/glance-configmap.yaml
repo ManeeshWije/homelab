@@ -68,7 +68,7 @@ data:
                   - title: Admin
                     links:
                       - title: Kubewall
-                        url: https://kubewall.${domain}
+                        url: https://k8s.${domain}
                         same-tab: true
                         hide-arrow: true
                       - title: Traefik
