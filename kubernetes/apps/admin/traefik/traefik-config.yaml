@@ -16,3 +16,5 @@ data:
           rule: "Host(`traefik.${domain}`)"
           entrypoints: ["websecure"]
           service: "api@internal"
+          middlewares:
+            - "admin-forwardauth-authelia@kubernetescrd"
