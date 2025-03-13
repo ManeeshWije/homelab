@@ -1,7 +1,7 @@
 {
   enabled: true,
   semanticCommits: 'enabled',
-  dependencyDashboard: true,
+  dependencyDashboard: false,
   dependencyDashboardTitle: 'Renovate Dashboard',
   suppressNotifications: [
     'prIgnoreNotification',
