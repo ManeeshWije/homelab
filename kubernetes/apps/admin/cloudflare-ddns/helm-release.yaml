@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: main
-              image: kubitodev/kubernetes-cloudflare-ddns:1.0.1
+              image: kubitodev/kubernetes-cloudflare-ddns:2.0.0
               env:
                 - name: authKey
                   value: "${ddns_cf_token}"
