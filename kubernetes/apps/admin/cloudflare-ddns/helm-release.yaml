@@ -19,10 +19,12 @@ spec:
       interval: 5m
   values:
     image:
-      repository: oznu/cloudflare-ddns
+      repository: kubitodev/kubernetes-cloudflare-ddns
       tag: latest
       pullPolicy: Always
     
     env:
-      API_KEY: "${ddns_cf_token}"
-      ZONE: "${domain}"
+      authKey: "${ddns_cf_token}"
+      dnsRecord: "${domain}"
+      recordId: "${ddns_record_id}"
+      zoneId: "${ddns_zone_id}"

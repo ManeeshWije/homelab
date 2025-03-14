@@ -12,3 +12,4 @@ resources:
   - bitnami.yaml
   - k8s-at-home.yaml
   - authelia.yaml
+  - kubito.yaml
