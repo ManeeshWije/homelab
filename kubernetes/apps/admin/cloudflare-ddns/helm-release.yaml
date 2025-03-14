@@ -1,32 +1,22 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
+apiVersion: batch/v1
+kind: CronJob
 metadata:
   name: cloudflare-ddns
   namespace: admin
 spec:
-  interval: 5m
-  upgrade:
-    force: true
-  chart:
+  schedule: "*/5 * * * *"  # Runs every 5 minutes
+  jobTemplate:
     spec:
-      chart: app-template
-      version: 3.7.2
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-      interval: 5m
-  values:
-    controllers:
-      main:
-        containers:
-          main:
-            image:
-              repository: kubitodev/kubernetes-cloudflare-ddns
-              tag: "1.0.1"
-            env:
-              authKey: "${ddns_cf_token}"
-              dnsRecord: "${domain}"
-              recordId: "${ddns_record_id}"
-              zoneId: "${ddns_zone_id}"
+      template:
+        spec:
+          containers:
+            - name: main
+              image: kubitodev/kubernetes-cloudflare-ddns
+              tag: latest
+              env:
+                authKey: "${ddns_cf_token}"
+                dnsRecord: "${domain}"
+                recordId: "${ddns_record_id}"
+                zoneId: "${ddns_zone_id}"
+          restartPolicy: Never
