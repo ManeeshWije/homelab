@@ -12,8 +12,7 @@ spec:
         spec:
           containers:
             - name: main
-              image: kubitodev/kubernetes-cloudflare-ddns
-              tag: latest
+              image: kubitodev/kubernetes-cloudflare-ddns:1.0.1
               env:
                 authKey: "${ddns_cf_token}"
                 dnsRecord: "${domain}"
