@@ -14,8 +14,12 @@ spec:
             - name: main
               image: kubitodev/kubernetes-cloudflare-ddns:1.0.1
               env:
-                authKey: "${ddns_cf_token}"
-                dnsRecord: "${domain}"
-                recordId: "${ddns_record_id}"
-                zoneId: "${ddns_zone_id}"
+                - name: authKey
+                  value: "${ddns_cf_token}"
+                - name: dnsRecord
+                  value: "${domain}"
+                - name: recordId
+                  value: "${ddns_record_id}"
+                - name: zoneId
+                  value: "${ddns_zone_id}"
           restartPolicy: Never
