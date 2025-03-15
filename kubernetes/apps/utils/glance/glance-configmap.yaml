@@ -37,7 +37,7 @@ data:
           - size: full
             widgets:
               - type: search
-                search-engine: duckduckgo
+                search-engine: https://search.brave.com/search?q={QUERY}
                 bangs:
                   - title: YouTube
                     shortcut: "!yt"
