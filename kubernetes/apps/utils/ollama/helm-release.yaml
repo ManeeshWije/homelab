@@ -27,6 +27,7 @@ spec:
               tag: 0.5.20-ollama
             env:
               DATABASE_URL: sqlite:////app/backend/data/webui_db/webui.db
+              OLLAMA_HOST: 0.0.0.0:11434
     ingress:
       main:
         enabled: true
