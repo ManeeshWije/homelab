@@ -36,7 +36,7 @@ data:
                   - title: ollama
                     icon: si:ollama
                     url: https://ollama.${domain}
-                    check-url: http://ollama.utils.svc.cluster.local:8080
+                    check-url: http://ollama-main.utils.svc.cluster.local:8080
                     same-tab: true
 
           - size: full
