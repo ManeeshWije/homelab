@@ -33,6 +33,11 @@ data:
                     url: https://freshrss.${domain}
                     check-url: http://freshrss.utils.svc.cluster.local:80
                     same-tab: true
+                  - title: ollama
+                    icon: si:ollama
+                    url: https://ollama.${domain}
+                    check-url: http://ollama.utils.svc.cluster.local:8080
+                    same-tab: true
 
           - size: full
             widgets:
