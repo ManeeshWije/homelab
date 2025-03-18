@@ -56,6 +56,10 @@ spec:
             subPath: glance.yml
             readOnly: true
       assets:
-        claimName: glance-assets
+        enabled: true
+        type: persistentVolumeClaim
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 1Gi
         globalMounts:
           - path: /app/assets
