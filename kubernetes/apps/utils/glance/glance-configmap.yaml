@@ -6,6 +6,7 @@ metadata:
   namespace: utils
 data:
   glance.yml: |
+    assets-path: /app/assets
     pages:
       - name: Home
         columns:
@@ -21,7 +22,6 @@ data:
                   - title: wijeproject
                     icon: si:wijeproject
                     url: https://${domain}
-                    check-url: http://site.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: watch-together
                     icon: si:watch-together
