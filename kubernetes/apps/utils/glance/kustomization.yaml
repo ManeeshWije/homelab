@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - glance-configmap.yaml
+  - glance-assets-pvc.yaml

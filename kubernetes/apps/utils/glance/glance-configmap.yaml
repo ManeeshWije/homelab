@@ -6,7 +6,8 @@ metadata:
   namespace: utils
 data:
   glance.yml: |
-    assets-path: /app/assets
+    server:
+      assets-path: /app/assets
     pages:
       - name: Home
         columns:
@@ -29,7 +30,7 @@ data:
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: freshrss
-                    icon: /app/assets/freshrss.png
+                    icon: /assets/freshrss.png
                     url: https://freshrss.${domain}
                     check-url: http://freshrss.utils.svc.cluster.local:80
                     same-tab: true
