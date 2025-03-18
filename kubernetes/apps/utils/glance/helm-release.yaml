@@ -27,7 +27,7 @@ spec:
               tag: latest
             env:
               TZ: America/Toronto
-
+              ASSETS_PATH: /app/assets
     ingress:
       main:
         enabled: true
