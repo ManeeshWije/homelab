@@ -56,7 +56,6 @@ spec:
             subPath: glance.yml
             readOnly: true
       assets:
-        type: persistentVolumeClaim
-        name: glance-assets
+        claimName: glance-assets
         globalMounts:
           - path: /app/assets
