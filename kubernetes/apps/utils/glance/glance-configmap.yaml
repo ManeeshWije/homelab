@@ -21,7 +21,7 @@ data:
                   - title: wijeproject
                     icon: si:wijeproject
                     url: https://${domain}
-                    check-url: https://wijeproject.com
+                    check-url: http://site.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: watch-together
                     icon: si:watch-together
