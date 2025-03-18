@@ -29,7 +29,7 @@ data:
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: freshrss
-                    icon: si:freshrss
+                    icon: /assets/freshrss.png
                     url: https://freshrss.${domain}
                     check-url: http://freshrss.utils.svc.cluster.local:80
                     same-tab: true
