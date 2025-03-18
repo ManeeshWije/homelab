@@ -58,7 +58,7 @@ spec:
             readOnly: true
       assets:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 1Gi
