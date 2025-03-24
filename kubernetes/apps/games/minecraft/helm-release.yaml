@@ -34,8 +34,9 @@ spec:
                   identifier: main
     service:
       main:
+        type: ClusterIP
         ports:
-          http:
+          minecraft:
             port: 25565
             protocol: TCP
     persistence:
