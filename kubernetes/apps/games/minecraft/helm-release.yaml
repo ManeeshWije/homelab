@@ -23,6 +23,16 @@ spec:
       tag: latest
       pullPolicy: Always
     hostNetwork: true
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: "minecraft.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
     service:
       main:
         ports:
@@ -33,8 +43,6 @@ spec:
       data:
         enabled: true
         existingClaim: minecraft-config
-    podSecurityContext:
-      fsGroup: 568
     minecraftServer:
       eula: 'TRUE'
       type: 'VANILLA'
