@@ -44,7 +44,7 @@ spec:
         existingClaim: minecraft-config
     podSecurityContext:
       fsGroup: 568
-    minecraftServer:
+    env:
       eula: 'TRUE'
       type: 'VANILLA'
       version: 'LATEST'
