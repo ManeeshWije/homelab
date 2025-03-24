@@ -22,6 +22,16 @@
        repository: itzg/minecraft-server
        tag: latest
      hostNetwork: true
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: "minecraft.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
      service:
        main:
          ports:
