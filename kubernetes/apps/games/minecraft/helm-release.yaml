@@ -26,9 +26,9 @@ spec:
       main:
         controller: main
         type: LoadBalancer
-        loadBalancerIP: ${minecraft_ip}
+        loadBalancerIP: "${minecraft_ip}"
         ports:
-          mqtt:
+          minecraft:
             enabled: true
             primary: true
             port: 25565
