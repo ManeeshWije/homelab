@@ -31,6 +31,7 @@ spec:
       type: 'VANILLA'
       version: 'LATEST'
       whitelist: 'tty_, abbybabyyy'
+      ops: 'tty_, abbybabyyy'
       maxPlayers: 2
       difficulty: 'easy'
       serviceType: LoadBalancer
