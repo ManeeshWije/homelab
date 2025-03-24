@@ -48,3 +48,5 @@
        TYPE: 'VANILLA'
        VERSION: 'LATEST'
        EULA: 'TRUE'
+       WHITELIST: 'tty_, abbybabyyy'
+       MAXPLAYERS: '2'
