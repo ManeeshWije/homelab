@@ -22,7 +22,7 @@
        repository: itzg/minecraft-server
        tag: latest
      hostNetwork: true
-    ingress:
+     ingress:
       main:
         enabled: true
         hosts:
