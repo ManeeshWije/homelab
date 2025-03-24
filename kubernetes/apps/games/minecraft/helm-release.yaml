@@ -22,16 +22,6 @@ spec:
       repository: itzg/minecraft-server
       tag: latest
       pullPolicy: Always
-    service:
-      main:
-        controller: main
-        type: LoadBalancer
-        loadBalancerIP: "${minecraft_ip}"
-        ports:
-          minecraft:
-            enabled: true
-            primary: true
-            port: 25565
     persistence:
       data:
         enabled: true
@@ -43,3 +33,5 @@ spec:
       whitelist: 'tty_, abbybabyyy'
       maxPlayers: 2
       difficulty: 'easy'
+      serviceType: LoadBalancer
+      loadBalancerIP: "${minecraft_ip}"
