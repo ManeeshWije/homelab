@@ -8,14 +8,15 @@ spec:
   interval: 5m
   upgrade:
     force: true
-    chart:
-      spec:
-        chart: minecraft
-        version: 4.26.0
-        sourceRef:
-          kind: HelmRepository
-          name: minecraft-server-charts
-          namespace: flux-system
+  chart:
+    spec:
+      chart: minecraft
+      version: 4.26.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 5m
   values:
     image:
       repository: itzg/minecraft-server
