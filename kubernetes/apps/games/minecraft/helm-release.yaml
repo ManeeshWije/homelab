@@ -48,6 +48,6 @@ spec:
       eula: 'TRUE'
       type: 'VANILLA'
       version: 'LATEST'
-      whitelist: 'tty_, abbybabyy'
+      whitelist: 'tty_, abbybabyyy'
       maxPlayers: 2
       difficulty: 'easy'
