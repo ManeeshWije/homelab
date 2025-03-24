@@ -35,10 +35,14 @@ spec:
                   identifier: main
     service:
       main:
+        controller: main
+        type: LoadBalancer
+        loadBalancerIP: ${minecraft_ip}
         ports:
-          http:
+          mqtt:
+            enabled: true
+            primary: true
             port: 25565
-            protocol: TCP
     persistence:
       data:
         enabled: true
