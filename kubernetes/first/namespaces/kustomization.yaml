@@ -7,3 +7,4 @@ resources:
   - longhorn-system.yaml
   - projects.yaml
   - utils.yaml
+  - games.yaml
