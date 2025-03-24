@@ -1,28 +1,28 @@
 ---
- apiVersion: helm.toolkit.fluxcd.io/v2
- kind: HelmRelease
- metadata:
-   name: minecraft
-   namespace: games
- spec:
-   interval: 5m
-   upgrade:
-     force: true
-   chart:
-     spec:
-       chart: kah-common-chart
-       version: 1.2.2
-       sourceRef:
-         kind: HelmRepository
-         name: k8s-at-home
-         namespace: flux-system
-       interval: 5m
-   values:
-     image:
-       repository: itzg/minecraft-server
-       tag: latest
-     hostNetwork: true
-     ingress:
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft
+  namespace: games
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: kah-common-chart
+      version: 1.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
+    hostNetwork: true
+    ingress:
       main:
         enabled: true
         hosts:
@@ -32,21 +32,22 @@
                 pathType: Prefix
                 service:
                   identifier: main
-     service:
-       main:
-         ports:
-           http:
-             port: 25565
-             protocol: TCP
-     persistence:
-       data:
-         enabled: true
-         existingClaim: minecraft-config
-     podSecurityContext:
-       fsGroup: 568
-     env:
-       TYPE: 'VANILLA'
-       VERSION: 'LATEST'
-       EULA: 'TRUE'
-       WHITELIST: 'tty_, abbybabyyy'
-       MAXPLAYERS: '2'
+    service:
+      main:
+        ports:
+          http:
+            port: 25565
+            protocol: TCP
+    persistence:
+      data:
+        enabled: true
+        existingClaim: minecraft-config
+    podSecurityContext:
+      fsGroup: 568
+    minecraftServer:
+      eula: 'TRUE'
+      type: 'VANILLA'
+      version: 'LATEST'
+      whitelist: 'tty_, abbybabyyy'
+      maxPlayers: '2'
+      difficulty: 'easy'
