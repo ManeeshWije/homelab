@@ -12,31 +12,17 @@ spec:
     spec:
       chart:
         spec:
-          chart: kah-common-chart
-          version: 1.2.2
+          chart: minecraft
+          version: 4.26.0
           sourceRef:
             kind: HelmRepository
-            name: k8s-at-home
+            name: minecraft-server-charts
             namespace: flux-system
   values:
     image:
       repository: itzg/minecraft-server
       tag: latest
       pullPolicy: Always
-      env:
-      - name: eula
-        value: 'TRUE'
-        name: type
-        value: 'VANILLA'
-        name: version
-        value: 'LATEST'
-        name: whitelist
-        value: 'tty_, abbybabyyy'
-        name: maxPlayers
-        value: 2
-        name: difficulty
-        value: 'easy'
-    hostNetwork: true
     ingress:
       main:
         enabled: true
@@ -59,3 +45,10 @@ spec:
         existingClaim: minecraft-config
     podSecurityContext:
       fsGroup: 568
+    minecraftServer:
+      eula: 'TRUE'
+      type: 'VANILLA'
+      version: 'LATEST'
+      whitelist: 'tty_, abbybabyyy'
+      maxPlayers: 2
+      difficulty: 'easy'
