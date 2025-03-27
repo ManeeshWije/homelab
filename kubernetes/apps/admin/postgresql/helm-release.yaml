@@ -6,8 +6,14 @@ metadata:
   namespace: admin
 spec:
   interval: 5m
+  timeout: 15m
   upgrade:
     force: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 15m
+    recreate: true
+    disableHooks: false
   chart:
     spec:
       chart: postgresql
@@ -21,6 +27,8 @@ spec:
     global:
       storageClass: "longhorn"
     primary:
+      podAnnotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "true"
       persistence:
         enabled: true
         size: 10Gi
@@ -31,6 +39,16 @@ spec:
         limits:
           memory: "1Gi"
           cpu: "500m"
+      startupProbe:
+        enabled: true
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        failureThreshold: 20
+      readinessProbe:
+        enabled: true
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        failureThreshold: 10
     auth:
       enablePostgresUser: true
       username: "${pg_username}"
