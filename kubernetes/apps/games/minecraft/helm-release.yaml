@@ -30,8 +30,8 @@ spec:
       eula: 'TRUE'
       type: 'VANILLA'
       version: 'LATEST'
-      whitelist: 'tty_, abbybabyyy'
-      ops: 'tty_, abbybabyyy'
+      whitelist: 'tty_, angelbbyabby'
+      ops: 'tty_, angelbbyabby'
       maxPlayers: 2
       difficulty: 'easy'
       serviceType: LoadBalancer
