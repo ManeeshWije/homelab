@@ -26,6 +26,7 @@ spec:
       data:
         enabled: true
         existingClaim: old-minecraft-config
+        mountPath: /data
     minecraftServer:
       eula: 'TRUE'
       type: 'VANILLA'
