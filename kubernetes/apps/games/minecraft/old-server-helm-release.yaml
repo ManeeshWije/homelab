@@ -1,0 +1,38 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: old-minecraft
+  namespace: games
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: minecraft
+      version: 4.26.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
+      pullPolicy: Always
+    persistence:
+      data:
+        enabled: true
+        existingClaim: old-minecraft-config
+    minecraftServer:
+      eula: 'TRUE'
+      type: 'VANILLA'
+      version: 'LATEST'
+      whitelist: 'tty_, angelbbyabby'
+      ops: 'tty_, angelbbyabby'
+      maxPlayers: 2
+      difficulty: 'easy'
+      serviceType: LoadBalancer
+      loadBalancerIP: "${old_minecraft_ip}"
