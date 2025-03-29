@@ -33,6 +33,7 @@ spec:
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
+      motd: "new world"
       difficulty: 'easy'
       serviceType: LoadBalancer
       loadBalancerIP: "${minecraft_ip}"
