@@ -21,11 +21,11 @@ spec:
     image:
       repository: itzg/minecraft-server
       tag: latest
-      pullPolicy: Always
     persistence:
-      data:
+      dataDir:
         enabled: true
         existingClaim: minecraft-config
+        mountPath: /data
     minecraftServer:
       eula: 'TRUE'
       type: 'VANILLA'
