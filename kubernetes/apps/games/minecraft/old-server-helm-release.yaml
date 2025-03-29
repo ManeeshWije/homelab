@@ -38,3 +38,7 @@ spec:
       serviceType: LoadBalancer
       servicePort: 25566
       loadBalancerIP: "${old_minecraft_ip}"
+    extraEnv:
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      GAME_RULES: "keepInventory=true"
+      CREATE_CONSOLE_IN_PIPE: "true"
