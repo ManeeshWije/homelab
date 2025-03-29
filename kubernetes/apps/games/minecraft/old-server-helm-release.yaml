@@ -35,4 +35,5 @@ spec:
       maxPlayers: 2
       difficulty: 'easy'
       serviceType: LoadBalancer
+      servicePort: 25566
       loadBalancerIP: "${old_minecraft_ip}"
