@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: maneeshwije/watch-together
-              tag: latest
+              tag: latest-arm64
               pullPolicy: Always
             env:
               - name: AWS_URL
