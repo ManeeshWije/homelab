@@ -25,7 +25,7 @@ spec:
             image:
               repository: maneeshwije/watch-together
               tag: latest
-              imagePullPolicy: Always
+              pullPolicy: Always
             env:
               - name: AWS_URL
                 valueFrom:
