@@ -1,0 +1,73 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: markdown-edit
+  namespace: projects
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.3
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: maneeshwije/markdown-edit
+              tag: latest-arm64
+              pullPolicy: Always
+            env:
+              - name: DATABASE_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: markdown-edit-secrets
+                    key: DATABASE_URL
+              - name: GOOGLE_CLIENT_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: markdown-edit-secrets
+                    key: GOOGLE_CLIENT_ID
+              - name: GOOGLE_CLIENT_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: markdown-edit-secrets
+                    key: GOOGLE_CLIENT_SECRET
+              - name: BASE_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: markdown-edit-secrets
+                    key: BASE_URL
+              - name: CLIENT_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: markdown-edit-secrets
+                    key: CLIENT_URL
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
+        hosts:
+          - host: "markdown.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+
