@@ -50,6 +50,8 @@ spec:
     workload:
       main:
         podSpec:
+          nodeSelector:
+            kubernetes.io/arch: arm64
           containers:
             main:
               probes:
@@ -76,4 +78,3 @@ spec:
         enabled: true
         mountPath: "/etc/wireguard"
         existingClaim: wireguard-config
-        nameOverride: wireguard-config
