@@ -36,11 +36,6 @@ spec:
             - NET_RAW
             - SYS_MODULE
     service:
-      main:
-        ports:
-          main:
-            port: 51821
-    service:
       vpn:
         loadBalancerIP: ${wg_host}
         type: LoadBalancer
