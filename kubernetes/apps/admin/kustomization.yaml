@@ -8,4 +8,4 @@ resources:
   - kubewall
   - capacitor
   - authelia
-  - wireguard
+  # - wireguard
