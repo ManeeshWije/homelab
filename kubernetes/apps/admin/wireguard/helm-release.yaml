@@ -40,6 +40,29 @@ spec:
         loadBalancerIP: ${wg_easy_ip}
         type: LoadBalancer
         externalTrafficPolicy: Local
+      main:
+        enabled: true
+        primary: false
+        type: ClusterIP
+        ports:
+          http:
+            enabled: true
+            port: 51821
+            targetPort: 51821
+            protocol: HTTP
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure-ext,websecure
+        hosts:
+          - host: "dashboard.${wg_host}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: wireguard-web
+                  port: 51821
     workload:
       main:
         podSpec:
