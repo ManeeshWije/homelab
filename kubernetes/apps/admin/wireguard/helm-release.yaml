@@ -38,7 +38,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: ${wg_host}
+        loadBalancerIP: ${wg_ui_host}
         ports:
           main:
             port: 51821
