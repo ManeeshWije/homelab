@@ -14,3 +14,4 @@ resources:
   - authelia.yaml
   - kubito.yaml
   - minecraft-server-charts.yaml
+  - truecharts.yaml
