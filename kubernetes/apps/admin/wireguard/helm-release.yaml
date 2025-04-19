@@ -76,3 +76,4 @@ spec:
         enabled: true
         mountPath: "/etc/wireguard"
         existingClaim: wireguard-config
+        nameOverride: wireguard-config
