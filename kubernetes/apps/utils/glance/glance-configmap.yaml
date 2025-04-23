@@ -108,6 +108,5 @@ data:
                   - swaywm/sway
                   - neovim/neovim
                   - sxyazi/yazi
-                  - ghostty-org/ghostty
                   - syncthing/syncthing
                   - immich-app/immich
