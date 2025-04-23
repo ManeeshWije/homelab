@@ -105,7 +105,9 @@ data:
               - type: releases
                 cache: 1d
                 repositories:
-                  - glanceapp/glance
-                  - immich-app/immich
-                  - syncthing/syncthing
+                  - swaywm/sway
                   - neovim/neovim
+                  - sxyazi/yazi
+                  - ghostty-org/ghostty
+                  - syncthing/syncthing
+                  - immich-app/immich
