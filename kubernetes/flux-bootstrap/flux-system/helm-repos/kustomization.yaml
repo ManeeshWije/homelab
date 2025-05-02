@@ -7,7 +7,7 @@ resources:
   - longhorn.yaml
   - grafana.yaml
   - dashboard.yaml
-  - bjw-s.yaml
+  - bjw-s-labs.yaml
   - jetstack.yaml
   - bitnami.yaml
   - k8s-at-home.yaml
