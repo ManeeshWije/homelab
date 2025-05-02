@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - config-pvc.yaml
-  - old-server-helm-release.yaml
-  - old-server-config-pvc.yaml
+  # - old-server-helm-release.yaml
+  # - old-server-config-pvc.yaml
