@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/open-webui/open-webui
-              tag: v0.6.5-ollama
+              tag: 0.6.9-ollama
               pullPolicy: Always
             env:
               DATABASE_URL: sqlite:////app/backend/data/webui_db/webui.db
