@@ -48,9 +48,6 @@ data:
                   - title: YouTube
                     shortcut: "!yt"
                     url: https://www.youtube.com/results?search_query={QUERY}
-                  - title: Amazon
-                    shortcut: "!am"
-                    url: https://www.amazon.com/s?k={QUERY}
               - type: bookmarks
                 groups:
                   - title: General
