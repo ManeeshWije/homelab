@@ -87,11 +87,12 @@ data:
                         same-tab: true
                         hide-arrow: true
               - type: hacker-news
-                limit: 15
+                limit: 20
                 collapse-after: 5
               - type: rss
                 title: gripped
                 style: horizontal-cards
+                thumbnail-height: 0
                 feeds:
                   - url: https://gripped.com/feed/
           - size: small
