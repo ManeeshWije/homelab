@@ -86,7 +86,14 @@ data:
                         url: https://capacitor.${domain}
                         same-tab: true
                         hide-arrow: true
-
+              - type: hacker-news
+                limit: 15
+                collapse-after: 5
+              - type: rss
+                title: gripped
+                style: horizontal-cards
+                feeds:
+                  - url: https://gripped.com/feed/
           - size: small
             widgets:
               - type: weather
