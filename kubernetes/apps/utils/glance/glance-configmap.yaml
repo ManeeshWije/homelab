@@ -92,7 +92,6 @@ data:
               - type: rss
                 title: gripped
                 style: horizontal-cards
-                thumbnail-height: 0
                 feeds:
                   - url: https://gripped.com/feed/
           - size: small
