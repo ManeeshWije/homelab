@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: authelia
-      version: 0.10.6
+      version: 0.10.10
       sourceRef:
         kind: HelmRepository
         name: authelia
@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: authelia/authelia
-      tag: 4.39.3
+      tag: 4.39.4
     pod:
       kind: Deployment
       strategy:
@@ -108,12 +108,12 @@ spec:
         smtp:
           enabled: true
           enabledSecret: true
-          address: 'smtp://${authelia_smtp_server}:465'
+          address: 'smtp://${authelia_smtp_server}:587'
           sender: "Authelia <${authelia_smtp_email}>"
           username: ${authelia_smtp_email}
-          timeout: '15 seconds'
+          timeout: '120 seconds'
           password:
-            value: ${authelia2_smtp_password}
+            value: ${authelia_smtp_password}
 
     secret:
       jwt:
