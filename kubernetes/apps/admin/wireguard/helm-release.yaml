@@ -21,7 +21,7 @@ spec:
     image:
       repository: ghcr.io/wg-easy/wg-easy
       pullPolicy: IfNotPresent
-      tag: 14@sha256:66352ccb4b5095992550aa567df5118a5152b6ed31be34b0a8e118a3c3a35bf5
+      tag: 15@sha256:bb8152762c36f824eb42bb2f3c5ab8ad952818fbef677d584bc69ec513b251b0
     securityContext:
       container:
         PUID: 0
