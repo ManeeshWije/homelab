@@ -9,7 +9,7 @@ spec:
   upgrade:
     force: true
   chart:
-    spec:
+    sec:
       chart: authelia
       version: 0.10.38
       sourceRef:
@@ -46,15 +46,8 @@ spec:
           persistentVolumeClaim:
             claimName: authelia-data
 
-      securityContext:
-        container:
-          fsGroup: 568
-
-    domain: "${domain}"
-
     ingress:
       enabled: true
-      subdomain: login
       tls:
         enabled: false
 
@@ -67,7 +60,6 @@ spec:
         issuer: "${domain}"
 
       authentication_backend:
-        disable_password_reset: true
         ldap:
           enabled: false
         file:
@@ -107,14 +99,9 @@ spec:
       notifier:
         smtp:
           enabled: true
-          enabledSecret: true
           address: 'smtp://${authelia_smtp_server}:587'
           sender: "Authelia <${authelia_smtp_email}>"
           username: ${authelia_smtp_email}
           timeout: '180 seconds'
           password:
             value: ${authelia_smtp_password}
-
-    secret:
-      jwt:
-        value: ${authelia_jwt_secret}
