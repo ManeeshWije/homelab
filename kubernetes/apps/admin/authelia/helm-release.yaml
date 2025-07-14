@@ -9,7 +9,7 @@ spec:
   upgrade:
     force: true
   chart:
-    sec:
+    spec:
       chart: authelia
       version: 0.10.38
       sourceRef:
