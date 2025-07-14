@@ -58,8 +58,10 @@ spec:
       assets:
         enabled: true
         type: persistentVolumeClaim
+        existingClaim: glance-assets
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 1Gi
         globalMounts:
-          - path: /app/assets
+          - path: /app/asset
+        size: 1Gi
+
