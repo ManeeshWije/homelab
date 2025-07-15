@@ -102,6 +102,6 @@ spec:
           address: 'smtp://${authelia_smtp_server}:587'
           sender: "Authelia <${authelia_smtp_email}>"
           username: ${authelia_smtp_email}
-          timeout: '180 seconds'
+          timeout: '200 seconds'
           password:
             value: ${authelia_smtp_password}
