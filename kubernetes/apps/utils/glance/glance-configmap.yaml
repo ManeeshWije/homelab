@@ -29,6 +29,25 @@ data:
                     url: https://watch.${domain}
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
+                  - title: radarr
+                    icon: si:radarr
+                    url: https://radarr.${domain}
+                    check-url: http://radarr.media.svc.cluster.local:7878
+                    same-tab: true
+                  - title: sonarr
+                    icon: si:sonarr
+                    url: https://sonarr.${domain}
+                    check-url: http://sonarr.media.svc.cluster.local:8989
+                    same-tab: true
+                  - title: jellyfin
+                    icon: si:jellyfin
+                    url: https://jellyfin.${domain}
+                    check-url: http://jellyfin.media.svc.cluster.local:8096
+                    same-tab: true
+                  - title: transmission
+                    icon: si:transmission
+                    url: https://transmission.${domain}
+                    check-url: http://transmission.media.svc.cluster.local:9091
                   - title: freshrss
                     icon: /assets/freshrss.png
                     url: https://freshrss.${domain}
