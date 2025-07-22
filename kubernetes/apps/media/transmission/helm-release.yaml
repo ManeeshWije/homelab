@@ -27,6 +27,9 @@ spec:
               tag: dev
             securityContext:
               fsGroup: 0
+              runAsUser: 0
+              runAsGroup: 0
+              fsGroupChangePolicy: "Always"
               capabilities:
                 add:
                   - NET_ADMIN
