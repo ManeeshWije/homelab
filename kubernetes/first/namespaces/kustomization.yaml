@@ -8,3 +8,4 @@ resources:
   - projects.yaml
   - utils.yaml
   - games.yaml
+  - media.yaml
