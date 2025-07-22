@@ -25,6 +25,10 @@ spec:
             image:
               repository: ghcr.io/home-operations/radarr
               tag: 5.27.0.10101
+            securityContext:
+              fsGroup: 1000
+              runAsUser: 1000
+              runAsGroup: 1000
             env:
               TZ: America/Toronto
 
