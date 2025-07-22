@@ -1,0 +1,87 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: transmission
+  namespace: media
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: haugene/transmission-openvpn
+              tag: dev
+            securityContext:
+              fsGroup: 1000
+              capabilities:
+                add:
+                  - NET_ADMIN
+            env:
+              TZ: America/Toronto
+              OPENVPN_USERNAME: "${vpn_proton_username}"
+              OPENVPN_PASSWORD: "${vpn_proton_password}"
+              OPENVPN_PROVIDER: CUSTOM
+              OPENVPN_CONFIG: nl.protonvpn.udp
+              LOCAL_NETWORK: "10.42.0.0/16,10.43.0.0/16,192.168.0.0/24"
+              PUID: 1000
+              PGID: 1000
+              TRANSMISSION_DOWNLOAD_DIR: /downloads
+              TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
+        hosts:
+          - host: "transmission.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 9091
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: transmission-config
+        globalMounts:
+          - path: /config
+            readOnly: false
+      vpn-config:
+        enabled: true
+        existingClaim: transmission-ovpn-config
+        globalMounts:
+          - path: /etc/openvpn/custom/
+            readOnly: false
+      downloads:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /media/Downloads
+        globalMounts:
+          - path: /downloads
+            readOnly: false
