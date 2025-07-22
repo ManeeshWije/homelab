@@ -5,7 +5,7 @@ metadata:
   name: transmission
   namespace: media
 spec:
-  interval: 5m
+  interval: 10m
   upgrade:
     force: true
   chart:
@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: bjw-s-labs
         namespace: flux-system
-      interval: 5m
+      interval: 10m
   values:
     controllers:
       main:
