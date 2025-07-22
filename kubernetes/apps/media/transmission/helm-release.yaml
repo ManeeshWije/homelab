@@ -26,7 +26,7 @@ spec:
               repository: haugene/transmission-openvpn
               tag: dev
             securityContext:
-              fsGroup: 0
+              fsGroup: 1000
               capabilities:
                 add:
                   - NET_ADMIN
@@ -37,8 +37,8 @@ spec:
               OPENVPN_PROVIDER: CUSTOM
               OPENVPN_CONFIG: nl.protonvpn.udp
               LOCAL_NETWORK: "10.42.0.0/16,10.43.0.0/16,192.168.0.0/24"
-              PUID: 0
-              PGID: 0
+              PUID: 1000
+              PGID: 1000
               TRANSMISSION_DOWNLOAD_DIR: /downloads
               TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
 
