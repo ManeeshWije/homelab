@@ -4,12 +4,9 @@
 
 ### Hardware
 
-- Raspberry Pi 5 with PoE+NVME hat (master and worker node)
-- **Coming Soon**:
-    -   Pi 5 with SATA hat to act as a simple NAS
-        - OpenMediaVault running ZFS (via plugin)
-        - Add to existing Syncthing network
-    -   More Pi's to act as worker nodes
+- 1x Raspberry Pi 5 with PoE+NVME hat
+- 1x Raspberry Pi 5 with RADXA Penta SATA hat to act as a simple NAS
+    - OpenMediaVault running ZFS (via plugin)
 
 ### Software
 
