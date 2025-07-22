@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/home-operations/sonarr
+              tag: 4.0.15.2940
+            securityContext:
+              fsGroup: 0
+              runAsUser: 0
+              runAsGroup: 0
+            env:
+              TZ: America/Toronto
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
+        hosts:
+          - host: "sonarr.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8989
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: sonarr-config
+      media:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /media/
+        globalMounts:
+          - path: /media
+            readOnly: false
