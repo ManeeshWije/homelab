@@ -38,7 +38,9 @@ spec:
                 cd /tmp/libnatpmp && \
                 echo "Building natpmpc..." && \
                 make && \
-                cp natpmpc /shared/natpmpc && \
+                echo "Available binaries:" && \
+                ls -la && \
+                cp natpmpc-static /shared/natpmpc && \
                 chmod +x /shared/natpmpc && \
                 echo "natpmpc installed successfully" && \
                 ls -la /shared/
