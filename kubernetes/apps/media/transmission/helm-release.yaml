@@ -20,28 +20,6 @@ spec:
   values:
     controllers:
       main:
-        initContainers:
-          copy-natpmpc:
-            image:
-              repository: alpine
-              tag: latest
-            command:
-              - /bin/sh
-              - -c
-            args:
-              - |
-                echo "Installing build dependencies..." && \
-                apk update && \
-                apk add --no-cache build-base git && \
-                echo "Cloning libnatpmp..." && \
-                git clone https://github.com/miniupnp/libnatpmp.git /tmp/libnatpmp && \
-                cd /tmp/libnatpmp && \
-                echo "Building natpmpc..." && \
-                make && \
-                cp natpmpc /shared/natpmpc && \
-                chmod +x /shared/natpmpc && \
-                echo "natpmpc installed successfully" && \
-                ls -la /shared/
         containers:
           main:
             image:
@@ -66,9 +44,8 @@ spec:
               PGID: 0
               TRANSMISSION_DOWNLOAD_DIR: /downloads
               TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
-        pod:
-          securityContext:
-            fsGroup: 0
+              TRANSMISSION_PORT_FORWARDING_ENABLED: true
+
     ingress:
       main:
         enabled: true
@@ -81,12 +58,14 @@ spec:
                 pathType: Prefix
                 service:
                   identifier: main
+
     service:
       main:
         controller: main
         ports:
           http:
             port: 9091
+
     persistence:
       config:
         enabled: true
@@ -110,11 +89,3 @@ spec:
         globalMounts:
           - path: /downloads
             readOnly: false
-      natpmpc-bin:
-        type: emptyDir
-        globalMounts:
-          - path: /shared
-            readOnly: false
-          - path: /usr/local/bin/natpmpc
-            subPath: natpmpc
-            readOnly: true
