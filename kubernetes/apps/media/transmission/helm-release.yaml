@@ -20,6 +20,18 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          copy-natpmpc:
+            image: alpine:latest
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                apk add --no-cache natpmp && \
+                cp /usr/bin/natpmpc /shared/natpmpc
+            volumeMounts:
+              - name: natpmpc-bin
+                mountPath: /shared
+
         containers:
           main:
             image:
@@ -44,6 +56,11 @@ spec:
               PGID: 0
               TRANSMISSION_DOWNLOAD_DIR: /downloads
               TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
+            volumeMounts:
+              - name: natpmpc-bin
+                mountPath: /usr/local/bin/natpmpc
+                subPath: natpmpc
+                readOnly: true
 
     ingress:
       main:
@@ -88,3 +105,6 @@ spec:
         globalMounts:
           - path: /downloads
             readOnly: false
+      natpmpc-bin:
+        type: emptyDir
+        globalMounts: []
