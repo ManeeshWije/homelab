@@ -22,8 +22,12 @@ spec:
       main:
         initContainers:
           copy-natpmpc:
-            image: alpine:latest
-            command: ["/bin/sh", "-c"]
+            image:
+              repository: alpine
+              tag: latest
+            command:
+              - /bin/sh
+              - -c
             args:
               - |
                 apk add --no-cache natpmp && \
@@ -56,7 +60,7 @@ spec:
               PGID: 0
               TRANSMISSION_DOWNLOAD_DIR: /downloads
               TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
-            volumeMounts:
+            extraVolumeMounts:
               - name: natpmpc-bin
                 mountPath: /usr/local/bin/natpmpc
                 subPath: natpmpc
