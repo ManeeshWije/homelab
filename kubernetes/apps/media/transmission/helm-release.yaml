@@ -30,8 +30,18 @@ spec:
               - -c
             args:
               - |
-                apk add --no-cache natpmp && \
-                cp /usr/bin/natpmpc /shared/natpmpc
+                echo "Installing build dependencies..." && \
+                apk update && \
+                apk add --no-cache build-base git && \
+                echo "Cloning libnatpmp..." && \
+                git clone https://github.com/miniupnp/libnatpmp.git /tmp/libnatpmp && \
+                cd /tmp/libnatpmp && \
+                echo "Building natpmpc..." && \
+                make && \
+                cp natpmpc /shared/natpmpc && \
+                chmod +x /shared/natpmpc && \
+                echo "natpmpc installed successfully" && \
+                ls -la /shared/
         containers:
           main:
             image:
