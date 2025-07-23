@@ -20,37 +20,11 @@ spec:
   values:
     controllers:
       main:
-        initContainers:
-          copy-natpmpc:
-            image:
-              repository: alpine
-              tag: latest
-            command:
-              - /bin/sh
-              - -c
-            args:
-              - |
-                echo "Installing build dependencies..." && \
-                apk update && \
-                apk add --no-cache build-base git && \
-                echo "Cloning libnatpmp..." && \
-                git clone https://github.com/miniupnp/libnatpmp.git /tmp/libnatpmp && \
-                cd /tmp/libnatpmp && \
-                echo "Building natpmpc..." && \
-                make && \
-                echo "Available binaries:" && \
-                ls -la && \
-                cp natpmpc-static /shared/natpmpc && \
-                chmod +x /shared/natpmpc && \
-                echo "natpmpc installed successfully" && \
-                ls -la /shared/ && \
-                echo "Testing natpmpc binary:" && \
-                /shared/natpmpc --help || echo "natpmpc help failed, but binary exists"
         containers:
           main:
             image:
-              repository: haugene/transmission-openvpn
-              tag: dev
+              repository: maneesh/transmission-openvpn
+              tag: natpmp
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -70,9 +44,7 @@ spec:
               PGID: 0
               TRANSMISSION_DOWNLOAD_DIR: /downloads
               TRANSMISSION_INCOMPLETE_DIR_ENABLED: false
-        pod:
-          securityContext:
-            fsGroup: 0
+
     ingress:
       main:
         enabled: true
@@ -85,12 +57,14 @@ spec:
                 pathType: Prefix
                 service:
                   identifier: main
+
     service:
       main:
         controller: main
         ports:
           http:
             port: 9091
+
     persistence:
       config:
         enabled: true
@@ -114,15 +88,3 @@ spec:
         globalMounts:
           - path: /downloads
             readOnly: false
-      natpmpc-bin:
-        type: emptyDir
-        advancedMounts:
-          copy-natpmpc:
-            copy-natpmpc:
-              - path: /shared
-                readOnly: false
-          main:
-            main:
-              - path: /usr/bin/natpmpc
-                subPath: natpmpc
-                readOnly: true
