@@ -43,7 +43,9 @@ spec:
                 cp natpmpc-static /shared/natpmpc && \
                 chmod +x /shared/natpmpc && \
                 echo "natpmpc installed successfully" && \
-                ls -la /shared/
+                ls -la /shared/ && \
+                echo "Testing natpmpc binary:" && \
+                /shared/natpmpc --help || echo "natpmpc help failed, but binary exists"
         containers:
           main:
             image:
@@ -114,9 +116,13 @@ spec:
             readOnly: false
       natpmpc-bin:
         type: emptyDir
-        globalMounts:
-          - path: /shared
-            readOnly: false
-          - path: /usr/local/bin/natpmpc
-            subPath: natpmpc
-            readOnly: true
+        advancedMounts:
+          copy-natpmpc:
+            copy-natpmpc:
+              - path: /shared
+                readOnly: false
+          main:
+            main:
+              - path: /usr/bin/natpmpc
+                subPath: natpmpc
+                readOnly: true
