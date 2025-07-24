@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: maneesh/transmission-openvpn
-              tag: natpmp
+              tag: natpmp-arm64
             securityContext:
               fsGroup: 0
               runAsUser: 0
