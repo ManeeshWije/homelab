@@ -23,10 +23,8 @@ spec:
         containers:
           main:
             image:
-              # repository: maneeshwije/transmission-openvpn
-              repository: haugene/transmission-openvpn
-              # tag: natpmp-arm64
-              tag: dev
+              repository: maneeshwije/transmission-openvpn
+              tag: natpmp-arm64
             securityContext:
               fsGroup: 0
               runAsUser: 0
