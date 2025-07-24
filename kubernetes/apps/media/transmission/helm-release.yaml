@@ -23,7 +23,7 @@ spec:
         containers:
           main:
             image:
-              repository: maneesh/transmission-openvpn
+              repository: maneeshwije/transmission-openvpn
               tag: natpmp-arm64
             securityContext:
               fsGroup: 0
