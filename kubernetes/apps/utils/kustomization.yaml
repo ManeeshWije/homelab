@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - freshrss
   - glance
-  - ollama
+  # - ollama
