@@ -27,6 +27,7 @@ spec:
               tag: 10.10.7
             env:
               TZ: America/Toronto
+              DOTNET_USE_POLLING_FILE_WATCHER: "true"
 
     ingress:
       main:
