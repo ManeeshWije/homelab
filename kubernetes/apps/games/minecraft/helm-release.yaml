@@ -31,13 +31,6 @@ spec:
       runAsUser: 1000
       runAsGroup: 3000
       fsGroup: 3000
-    resources:
-      requests:
-        cpu: "1000m"
-        memory: "4Gi"
-      limits:
-        cpu: "2000m"
-        memory: "8Gi"
     livenessProbe:
       initialDelaySeconds: 600 
       periodSeconds: 60
@@ -49,15 +42,12 @@ spec:
     minecraftServer:
       eula: 'TRUE'
       type: 'AUTO_CURSEFORGE'
-      forceReDownload: true
       autoCurseForge:
         apiKey:
           key: "${cf_api_key}"
           secretKey: cf-api-key
         pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
         slug: "farming-crossing-5-made-to-order"
-        setLevelFrom: "WORLD_FILE"
-        forceUpdate: true
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
