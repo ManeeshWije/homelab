@@ -28,16 +28,17 @@ spec:
         mountPath: /data
     minecraftServer:
       eula: 'TRUE'
-      type: 'FABRIC'
-      modrinth:
-        projects:
-          - 'fabric-api'
-          - 'lithium'
-        downloadDependencies: "optional"
+      type: 'AUTO_CURSEFORGE'
+      autoCurseforge:
+        apiKey:
+          key: "${cf_api_key}"
+          existingSecret: ""
+          secretKey: cf-api-key
+        pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
-      motd: "new world"
+      motd: "modded"
       difficulty: 'easy'
       serviceType: LoadBalancer
       loadBalancerIP: "${minecraft_ip}"
