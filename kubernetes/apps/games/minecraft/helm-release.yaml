@@ -29,7 +29,7 @@ spec:
     minecraftServer:
       eula: 'TRUE'
       type: 'AUTO_CURSEFORGE'
-      autoCurseforge:
+      autoCurseForge:
         apiKey:
           key: "${cf_api_key}"
           existingSecret: ""
