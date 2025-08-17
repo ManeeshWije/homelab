@@ -41,12 +41,15 @@ spec:
     minecraftServer:
       eula: 'TRUE'
       type: 'AUTO_CURSEFORGE'
+      forceReDownload: true
+      removeOldMods: true
       autoCurseForge:
         apiKey:
           key: "${cf_api_key}"
         pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
         slug: "farming-crossing-5-made-to-order"
         setLevelFrom: "WORLD_FILE"
+        forceUpdate: true
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
@@ -55,3 +58,12 @@ spec:
       serviceType: LoadBalancer
       loadBalancerIP: "${minecraft_ip}"
       levelSeed: '-2032795982907864146'
+    extraEnv:
+      - name: FORCE_REDOWNLOAD
+        value: "true"
+      - name: REMOVE_OLD_MODS
+        value: "true"
+      - name: DEBUG
+        value: "true"
+      - name: USE_AIKAR_FLAGS
+        value: "true"
