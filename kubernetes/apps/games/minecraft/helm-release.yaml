@@ -71,10 +71,6 @@ spec:
         -XX:G1MaxNewSizePercent=80
         -XX:InitiatingHeapOccupancyPercent=10
         -XX:G1MixedGCLiveThresholdPercent=50
-        -XX:+AggressiveOpts
-        -XX:+UseStringDeduplication
-        -Dnet.minecraftforge.common.ForgeConfig.skipDatapackValidation=true
-        -Dfml.readTimeout=180
       
       autoCurseForge:
         apiKey:
