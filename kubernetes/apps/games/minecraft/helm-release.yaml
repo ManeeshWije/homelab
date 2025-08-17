@@ -5,7 +5,7 @@ metadata:
   name: minecraft
   namespace: games
 spec:
-  interval: 5m
+  interval: 20m
   upgrade:
     force: true
   chart:
@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: minecraft-server-charts
         namespace: flux-system
-      interval: 5m
+      interval: 20m
   values:
     image:
       repository: itzg/minecraft-server
