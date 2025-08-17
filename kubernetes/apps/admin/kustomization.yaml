@@ -5,7 +5,7 @@ resources:
   - traefik
   - cloudflare-ddns
   - postgresql
-  - kubewall
+  # - kubewall
   - capacitor
   - authelia
   - wireguard
