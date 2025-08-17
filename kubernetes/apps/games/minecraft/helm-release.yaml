@@ -43,7 +43,7 @@ spec:
       type: 'AUTO_CURSEFORGE'
       autoCurseForge:
         apiKey:
-          key: "${cf_api_key}"
+          key: "${cf-api-key}"
           existingSecret: ""
           secretKey: cf-api-key
         pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
