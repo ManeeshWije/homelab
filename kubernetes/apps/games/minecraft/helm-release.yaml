@@ -35,6 +35,7 @@ spec:
           existingSecret: ""
           secretKey: cf-api-key
         pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
+        slug: "farming-crossing-5-made-to-order"
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
