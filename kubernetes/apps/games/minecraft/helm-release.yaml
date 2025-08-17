@@ -8,6 +8,7 @@ spec:
   interval: 20m
   upgrade:
     force: true
+    timeout: 20m
   chart:
     spec:
       chart: minecraft
