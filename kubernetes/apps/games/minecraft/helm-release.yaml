@@ -44,15 +44,13 @@ spec:
     
     livenessProbe:
       initialDelaySeconds: 900
-      periodSeconds: 60
-      failureThreshold: 10
-      timeoutSeconds: 30
+      periodSeconds: 120
+      failureThreshold: 20
     
     readinessProbe:
       initialDelaySeconds: 900
-      periodSeconds: 60
-      failureThreshold: 10
-      timeoutSeconds: 30
+      periodSeconds: 120
+      failureThreshold: 20
     
     minecraftServer:
       eula: 'TRUE'
