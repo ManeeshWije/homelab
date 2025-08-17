@@ -39,9 +39,13 @@ spec:
         cpu: "2000m"
         memory: "8Gi"
     livenessProbe:
-      enabled: false
+      initialDelaySeconds: 600 
+      periodSeconds: 60
+      failureThreshold: 10
     readinessProbe:
-      enabled: false
+      initialDelaySeconds: 600
+      periodSeconds: 60
+      failureThreshold: 10
     minecraftServer:
       eula: 'TRUE'
       type: 'AUTO_CURSEFORGE'
