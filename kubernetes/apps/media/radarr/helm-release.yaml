@@ -63,7 +63,7 @@ spec:
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /media/
+            path: /gargantua/
         globalMounts:
-          - path: /media
+          - path: /gargantua
             readOnly: false
