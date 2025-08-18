@@ -8,7 +8,7 @@ spec:
   interval: 20m
   upgrade:
     force: true
-    timeout: 30m
+    interval: 20m
   chart:
     spec:
       chart: minecraft
@@ -22,80 +22,24 @@ spec:
     image:
       repository: itzg/minecraft-server
       tag: latest
-    
-    resources:
-      requests:
-        memory: 3Gi
-        cpu: 1000m
-      limits:
-        memory: 3.5Gi
-        cpu: 2000m
-    
     persistence:
       dataDir:
         enabled: true
         existingClaim: minecraft-config
         mountPath: /data
-    
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 3000
-      fsGroup: 3000
-    
-    livenessProbe:
-      initialDelaySeconds: 900
-      periodSeconds: 120
-      failureThreshold: 20
-    
-    readinessProbe:
-      initialDelaySeconds: 900
-      periodSeconds: 120
-      failureThreshold: 20
-    
     minecraftServer:
       eula: 'TRUE'
-      type: 'AUTO_CURSEFORGE'
-      
-      memory: 3072M
-      jvmOpts:
-        -Xmx3G
-        -Xms2G
-        -XX:+UseG1GC
-        -XX:+UnlockExperimentalVMOptions
-        -XX:MaxGCPauseMillis=100
-        -XX:+DisableExplicitGC
-        -XX:TargetSurvivorRatio=90
-        -XX:G1NewSizePercent=50
-        -XX:G1MaxNewSizePercent=80
-        -XX:InitiatingHeapOccupancyPercent=10
-        -XX:G1MixedGCLiveThresholdPercent=50
-      
-      autoCurseForge:
-        apiKey:
-          key: "${cf_api_key}"
-          secretKey: cf-api-key
-        pageUrl: "https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order"
-        slug: "farming-crossing-5-made-to-order"
-        
+      type: 'FABRIC'
+      modrinth:
+        projects:
+          - 'fabric-api'
+          - 'lithium'
+        downloadDependencies: "optional"
       whitelist: 'tty_, angelbbyabby'
       ops: 'tty_, angelbbyabby'
       maxPlayers: 2
-      motd: "modded"
+      motd: "new world"
       difficulty: 'easy'
       serviceType: LoadBalancer
       loadBalancerIP: "${minecraft_ip}"
       levelSeed: '-2032795982907864146'
-      
-      maxWorldSize: 10000
-      spawnProtection: 0
-      viewDistance: 8
-      
-    extraEnv:
-      - name: INIT_MEMORY
-        value: "2G"
-      - name: MAX_MEMORY
-        value: "3G"
-      - name: USE_AIKAR_FLAGS
-        value: "true"
-      - name: OVERRIDE_SERVER_PROPERTIES
-        value: "true"
