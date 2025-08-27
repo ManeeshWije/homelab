@@ -44,6 +44,10 @@ data:
                     url: https://jellyfin.${domain}
                     check-url: http://jellyfin.media.svc.cluster.local:8096
                     same-tab: true
+                  - title: qbittorrent
+                    icon: si:qbittorrent
+                    url: https://qb.${domain}
+                    check-url: http://qbittorrent.media.svc.cluster.local:8080
                   - title: transmission
                     icon: si:transmission
                     url: https://transmission.${domain}
