@@ -1,0 +1,143 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+  values:
+    defaultPodOptions:
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
+
+    controllers:
+      app:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/home-operations/qbittorrent
+              tag: 5.1.2
+            env:
+              PUID: 0
+              PGID: 0
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+
+          port-forward:
+            image:
+              repository: ghcr.io/bjw-s-labs/gluetun-qb-port-sync
+              tag: 0.0.4
+            env:
+              GLUETUN_CONTROL_SERVER_HOST: localhost
+              GLUETUN_CONTROL_SERVER_PORT: 8000
+              QBITTORRENT_HOST: localhost
+              QBITTORRENT_WEBUI_PORT: 8080
+              CRON_ENABLED: true
+              CRON_SCHEDULE: '*/5 * * * *'
+              LOG_TIMESTAMP: true
+
+        initContainers:
+          dnsdist:
+            image:
+              repository: docker.io/powerdns/dnsdist-19
+              tag: 1.9.10
+            restartPolicy: Always
+
+          gluetun:
+            dependsOn: dnsdist
+            image:
+              repository: ghcr.io/qdm12/gluetun
+              tag: v3.40.0
+            env:
+              VPN_TYPE: wireguard
+              VPN_INTERFACE: wg0
+              VPN_SERVICE_PROVIDER: protonvpn
+              VPN_PORT_FORWARDING: on
+              PORT_FORWARD_ONLY: on
+              SERVER_COUNTRIES: Switzerland
+              WIREGUARD_PRIVATE_KEY: ${vpn_proton_wg_private_key}
+              FIREWALL_INPUT_PORTS: 8080
+              DOT: 'off'
+              DNS_ADDRESS: 127.0.0.2
+              TZ: America/Toronto
+            restartPolicy: Always
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+
+    service:
+      app:
+        controller: app
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      app:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
+        hosts:
+          - host: "qb.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: app
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: qbittorrent-config
+        globalMounts:
+          - path: /config
+
+      downloads:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/Downloads
+        globalMounts:
+          - path: /downloads
+
+      tun:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/net
+        hostPathType: Directory
+        globalMounts:
+          - path: /dev/net/tun
+            subPath: tun
+
+      dnsdist:
+        enabled: true
+        type: configMap
+        name: qbittorrent-dnsdist
+        globalMounts:
+          - path: /etc/dnsdist/dnsdist.conf
+            subPath: dnsdist.conf
+            readOnly: true
+
+      port-forward-config:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /config
