@@ -48,7 +48,7 @@ spec:
               WIREGUARD_PRIVATE_KEY: ${vpn_proton_wg_private_key}
               FIREWALL_INPUT_PORTS: 8080
               # FIREWALL_OUTBOUND_SUBNETS: 0.0.0.0/0
-              FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224.0.0.0/4,0.0.0.0/1,128.0.0.0/1
+              FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224.0.0.0/4,128.0.0.0/1
               DOT: 'off'
               DNS_ADDRESS: 127.0.0.2
               TZ: America/Toronto
