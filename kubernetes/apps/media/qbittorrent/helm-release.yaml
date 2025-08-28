@@ -44,7 +44,7 @@ spec:
               VPN_SERVICE_PROVIDER: protonvpn
               VPN_PORT_FORWARDING: on
               PORT_FORWARD_ONLY: on
-              SERVER_COUNTRIES: Norway
+              SERVER_COUNTRIES: Finland
               WIREGUARD_PRIVATE_KEY: ${vpn_proton_wg_private_key}
               FIREWALL_INPUT_PORTS: 8080
               DOT: 'off'
