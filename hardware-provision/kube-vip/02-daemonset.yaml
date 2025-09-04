@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app.kubernetes.io/name: kube-vip-ds
-    app.kubernetes.io/version: v0.8.9
+    app.kubernetes.io/version: v1.0.0
   name: kube-vip-ds
   namespace: kube-system
 spec:
@@ -16,15 +16,12 @@ spec:
       creationTimestamp: null
       labels:
         app.kubernetes.io/name: kube-vip-ds
-        app.kubernetes.io/version: v0.8.9
+        app.kubernetes.io/version: v1.0.0
     spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/master
-                operator: Exists
             - matchExpressions:
               - key: node-role.kubernetes.io/control-plane
                 operator: Exists
@@ -41,15 +38,11 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: vip_interface
-          value: wlan0
-        - name: vip_cidr
+          value: eth0
+        - name: vip_subnet
           value: "32"
         - name: dns_mode
           value: first
-        - name: cp_enable
-          value: "true"
-        - name: cp_namespace
-          value: kube-system
         - name: svc_enable
           value: "true"
         - name: svc_leasename
@@ -68,7 +61,7 @@ spec:
           value: 192.168.40.49
         - name: prometheus_server
           value: :2112
-        image: ghcr.io/kube-vip/kube-vip:v0.8.9
+        image: ghcr.io/kube-vip/kube-vip:v1.0.0
         imagePullPolicy: IfNotPresent
         name: kube-vip
         resources: {}
@@ -77,6 +70,8 @@ spec:
             add:
             - NET_ADMIN
             - NET_RAW
+            drop:
+            - ALL
       hostNetwork: true
       serviceAccountName: kube-vip
       tolerations:
