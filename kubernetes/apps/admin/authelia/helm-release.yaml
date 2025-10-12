@@ -5,7 +5,7 @@ metadata:
   name: authelia
   namespace: admin
 spec:
-  interval: 5m
+  interval: 10m
   upgrade:
     force: true
   chart:
@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: authelia
         namespace: flux-system
-      interval: 5m
+      interval: 10m
   values:
     image:
       repository: authelia/authelia
