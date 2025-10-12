@@ -11,21 +11,22 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.3
+      version: 4.2.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-labs
         namespace: flux-system
       interval: 5m
+
   values:
     defaultPodOptions:
       dnsConfig:
         options:
           - name: ndots
             value: "1"
+
     controllers:
-      app:
-        enabled: true
+      main:
         initContainers:
           dnsdist:
             image:
@@ -55,8 +56,9 @@ spec:
               capabilities:
                 add:
                   - NET_ADMIN
+
         containers:
-          app:
+          main:
             image:
               repository: ghcr.io/home-operations/qbittorrent
               tag: 5.1.2
@@ -81,14 +83,14 @@ spec:
               LOG_TIMESTAMP: true
 
     service:
-      app:
-        controller: app
+      main:
+        controller: main
         ports:
           http:
             port: 8080
 
     ingress:
-      app:
+      main:
         enabled: true
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
@@ -98,14 +100,14 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  identifier: app
+                  identifier: main
+
     persistence:
       config:
         existingClaim: qbittorrent-config
-        advancedMounts:
-          app:
-            app:
-              - path: /config
+        globalMounts:
+          - path: /config
+
       downloads:
         enabled: true
         type: custom
@@ -113,32 +115,26 @@ spec:
           nfs:
             server: "${storage_host_ip}"
             path: /gargantua/Downloads
-        advancedMounts:
-          app:
-            app:
-              - path: /downloads
+        globalMounts:
+          - path: /downloads
+
       tun:
         type: hostPath
         hostPath: /dev/net
         hostPathType: Directory
-        advancedMounts:
-          app:
-            gluetun:
-              - path: /dev/net/tun
-                subPath: tun
+        globalMounts:
+          - path: /dev/net/tun
+            subPath: tun
+
       dnsdist:
         type: configMap
         name: qbittorrent-dnsdist
-        advancedMounts:
-          app:
-            dnsdist:
-              - path: /etc/dnsdist/dnsdist.conf
-                subPath: dnsdist.conf
-                readOnly: true
+        globalMounts:
+          - path: /etc/dnsdist/dnsdist.conf
+            subPath: dnsdist.conf
+            readOnly: true
 
       port-forward-config:
         type: emptyDir
-        advancedMounts:
-          app:
-            port-forward:
-              - path: /config
+        globalMounts:
+          - path: /config
