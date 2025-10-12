@@ -105,8 +105,10 @@ spec:
     persistence:
       config:
         existingClaim: qbittorrent-config
-        globalMounts:
-          - path: /config
+        targetSelector:
+          main:
+            main:
+              - path: /config
 
       downloads:
         enabled: true
@@ -115,26 +117,34 @@ spec:
           nfs:
             server: "${storage_host_ip}"
             path: /gargantua/Downloads
-        globalMounts:
-          - path: /downloads
+        targetSelector:
+          main:
+            main:
+              - path: /downloads
 
       tun:
         type: hostPath
         hostPath: /dev/net
         hostPathType: Directory
-        globalMounts:
-          - path: /dev/net/tun
-            subPath: tun
+        targetSelector:
+          main:
+            gluetun:
+              - path: /dev/net/tun
+                subPath: tun
 
       dnsdist:
         type: configMap
         name: qbittorrent-dnsdist
-        globalMounts:
-          - path: /etc/dnsdist/dnsdist.conf
-            subPath: dnsdist.conf
-            readOnly: true
+        targetSelector:
+          main:
+            dnsdist:
+              - path: /etc/dnsdist/dnsdist.conf
+                subPath: dnsdist.conf
+                readOnly: true
 
       port-forward-config:
         type: emptyDir
-        globalMounts:
-          - path: /config
+        targetSelector:
+          main:
+            port-forward:
+              - path: /config
