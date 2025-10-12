@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.3
+      version: 4.2.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-labs
@@ -30,7 +30,6 @@ spec:
               TZ: America/Toronto
               ADMIN_TOKEN: "${vaultwarden_admin_token}"
               EXPERIMENTAL_CLIENT_FEATURE_FLAGS: "ssh-key-vault-item,ssh-agent"
-
     ingress:
       main:
         enabled: true
@@ -52,7 +51,6 @@ spec:
           websocket:
             enabled: true
             port: 3012
-
     persistence:
       config:
         enabled: true
