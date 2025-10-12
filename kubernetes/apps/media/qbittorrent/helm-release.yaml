@@ -17,16 +17,15 @@ spec:
         name: bjw-s-labs
         namespace: flux-system
       interval: 5m
-
   values:
     defaultPodOptions:
       dnsConfig:
         options:
           - name: ndots
             value: "1"
-
     controllers:
       main:
+        enabled: true
         initContainers:
           dnsdist:
             image:
@@ -56,7 +55,6 @@ spec:
               capabilities:
                 add:
                   - NET_ADMIN
-
         containers:
           main:
             image:
@@ -105,9 +103,10 @@ spec:
     persistence:
       config:
         existingClaim: qbittorrent-config
-        globalMounts:
-          - path: /config
-
+        advancedMounts:
+          main:
+            main:
+              - path: /config
       downloads:
         enabled: true
         type: custom
@@ -115,26 +114,32 @@ spec:
           nfs:
             server: "${storage_host_ip}"
             path: /gargantua/Downloads
-        globalMounts:
-          - path: /downloads
-
+        advancedMounts:
+          main:
+            main:
+              - path: /downloads
       tun:
         type: hostPath
         hostPath: /dev/net
         hostPathType: Directory
-        globalMounts:
-          - path: /dev/net/tun
-            subPath: tun
-
+        advancedMounts:
+          main:
+            gluetun:
+              - path: /dev/net/tun
+                subPath: tun
       dnsdist:
         type: configMap
         name: qbittorrent-dnsdist
-        globalMounts:
-          - path: /etc/dnsdist/dnsdist.conf
-            subPath: dnsdist.conf
-            readOnly: true
+        advancedMounts:
+          main:
+            dnsdist:
+              - path: /etc/dnsdist/dnsdist.conf
+                subPath: dnsdist.conf
+                readOnly: true
 
       port-forward-config:
         type: emptyDir
-        globalMounts:
-          - path: /config
+        advancedMounts:
+          main:
+            port-forward:
+              - path: /config
