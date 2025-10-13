@@ -21,8 +21,6 @@ spec:
   values:
     global:
       storageClass: "longhorn"
-    image:
-      pullPolicy: Always
     primary:
       persistence:
         enabled: true
