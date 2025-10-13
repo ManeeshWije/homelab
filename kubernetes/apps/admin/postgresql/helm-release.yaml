@@ -8,6 +8,7 @@ spec:
   interval: 15m
   upgrade:
     force: true
+    timeout: 20m
   chart:
     spec:
       chart: postgresql
