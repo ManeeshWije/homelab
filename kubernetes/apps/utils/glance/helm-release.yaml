@@ -58,6 +58,7 @@ spec:
       assets:
         enabled: true
         type: persistentVolumeClaim
+        existingClaim: glance
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 1Gi
