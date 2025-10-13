@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "${domain/./-}"
+  name: admin
   namespace: admin
 spec:
   secretName: "${domain/./-}-tls"
