@@ -5,7 +5,7 @@ metadata:
   name: postgresql
   namespace: admin
 spec:
-  interval: 15m
+  interval: 5m
   upgrade:
     force: true
     timeout: 20m
@@ -17,7 +17,7 @@ spec:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
-      interval: 15m
+      interval: 5m
   values:
     global:
       storageClass: "longhorn"
