@@ -15,6 +15,7 @@ spec:
     name: flux-system
   decryption:
     provider: sops
+    serviceAccountName: sops-identity
     secretRef:
       name: sops-gpg
   postBuild:
