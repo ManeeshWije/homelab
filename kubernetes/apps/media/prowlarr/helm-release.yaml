@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/home-operations/prowlarr
-              tag: 2.1.3.5208
+              tag: 2.1.5.5213
             securityContext:
               fsGroup: 0
               runAsUser: 0
