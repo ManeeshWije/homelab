@@ -30,7 +30,7 @@ spec:
     defaultSettings:
       backupTarget: nfs://${storage_host_ip}:/gargantua/pimaster
       backupConcurrentLimit: 1
-      concurrentAutomaticEngineUpgradePerNodeLimit: 1
+      concurrentAutomaticEngineUpgradePerNodeLimit: "1"
 
     csi:
       kubeletRootDir: /var/lib/kubelet
