@@ -61,22 +61,22 @@ spec:
         enabled: true
         existingClaim: calibre-web-automated-config
 
-      # ingest:
-      #   enabled: true
-      #   type: custom
-      #   volumeSpec:
-      #     nfs:
-      #       server: "${storage_host_ip}"
-      #       path: /gargantua/Downloads
-      #   globalMounts:
-      #     - path: /cwa-book-ingest
-      #
-      # library:
-      #   enabled: true
-      #   type: custom
-      #   volumeSpec:
-      #     nfs:
-      #       server: "${storage_host_ip}"
-      #       path: /gargantua/media/books
-      #   globalMounts:
-      #     - path: /calibre-library
+      ingest:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/books-import
+        globalMounts:
+          - path: /cwa-book-ingest
+
+      library:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/books-library
+        globalMounts:
+          - path: /calibre-library
