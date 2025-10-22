@@ -19,7 +19,7 @@ spec:
       interval: 5m
   values:
     image:
-      tag: v3.3.4
+      tag: v3.5.0
     ingressRoute:
       dashboard:
         enabled: false
