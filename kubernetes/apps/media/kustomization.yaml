@@ -10,6 +10,5 @@ resources:
   - transmission
   - qbittorrent
   - cleanuparr
-  - bookshelf
   - calibre-web-automated
   - calibre-web-automated-downloader
