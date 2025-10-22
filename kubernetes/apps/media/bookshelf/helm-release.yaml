@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/pennydreadful/bookshelf
-              tag: softcover
+              tag: hardcover
             securityContext:
               fsGroup: 0
               runAsUser: 0
