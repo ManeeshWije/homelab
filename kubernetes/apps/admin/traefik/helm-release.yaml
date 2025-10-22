@@ -23,9 +23,6 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
-    observability:
-      tracing:
-        enabled: false
     ports:
       web:
         redirections:
@@ -33,6 +30,9 @@ spec:
             to: websecure
             scheme: https
             permanent: true
+        observability:
+          tracing: true
+          traceVerbosity: minimal
       websecure:
         asDefault: true
         tls:
@@ -40,6 +40,9 @@ spec:
           options: "default"
         middlewares: 
           - admin-redirect-www-to-root@kubernetescrd
+        observability:
+          tracing: true
+          traceVerbosity: minimal
       web-ext:
         asDefault: false
         port: 9080
@@ -51,6 +54,9 @@ spec:
             to: websecure
             scheme: https
             permanent: true
+        observability:
+          tracing: true
+          traceVerbosity: minimal
       websecure-ext:
         asDefault: false
         port: 9443
@@ -60,16 +66,16 @@ spec:
         tls:
           enabled: true
           options: "default"
-
+        observability:
+          tracing: true
+          traceVerbosity: minimal
     additionalArguments:
       - "--providers.file.filename=/etc/traefik/dynamic.yml"
       - "--providers.file.watch=true"
-
     volumes:
       - name: traefik-config
         mountPath: /etc/traefik
         type: configMap
-
     service:
       spec:
         externalTrafficPolicy: Cluster
