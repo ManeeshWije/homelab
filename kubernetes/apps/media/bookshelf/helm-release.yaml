@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: readarr
+  name: bookshelf
   namespace: media
 spec:
   interval: 5m
@@ -23,8 +23,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/faustvii/readarr
-              tag: latest
+              repository: ghcr.io/pennydreadful/bookshelf
+              tag: hardcover-v0.4.20.91@sha256:00997a32b855bc25c21751747713abd10ddf80655866401a2863711d5efc858a
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -39,7 +39,7 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
         hosts:
-          - host: "readarr.${domain}"
+          - host: "bookshelf.${domain}"
             paths:
               - path: /
                 pathType: Prefix
@@ -55,7 +55,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: readarr-config
+        existingClaim: bookshelf-config
       media:
         enabled: true
         type: custom
