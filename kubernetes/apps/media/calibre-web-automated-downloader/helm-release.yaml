@@ -1,0 +1,75 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: calibre-web-automated-downloader
+  namespace: media
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/calibrain/calibre-web-automated-book-downloader
+              tag: "20250815" # keep quoted, avoids float parsing issue
+            securityContext:
+              fsGroup: 0
+              runAsUser: 0
+              runAsGroup: 0
+              fsGroupChangePolicy: "Always"
+            env:
+              TZ: America/Toronto
+              CLOUDFLARE_PROXY_BYPASS: http://localhost:8000
+
+          bypass:
+            enabled: true
+            image:
+              repository: ghcr.io/sarperavci/cloudflarebypassforscraping
+              tag: latest
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8083
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
+        hosts:
+          - host: "getbooks.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+    persistence:
+      config:
+        enabled: true
+        existingClaim: calibre-web-automated-downloader-config
+      ingest:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/media/books/import
+        globalMounts:
+          - path: /cwa-book-ingest
+            readOnly: false

@@ -11,4 +11,5 @@ resources:
   - qbittorrent
   - cleanuparr
   - bookshelf
-  - lazylibrarian
+  - calibre-web-automated
+  - calibre-web-automated-downloader

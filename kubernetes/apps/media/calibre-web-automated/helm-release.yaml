@@ -1,8 +1,7 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: lazylibrarian
+  name: calibre-web-automated
   namespace: media
 spec:
   interval: 5m
@@ -17,14 +16,15 @@ spec:
         name: bjw-s-labs
         namespace: flux-system
       interval: 5m
+
   values:
     controllers:
       main:
         containers:
           main:
             image:
-              repository: linuxserver/lazylibrarian
-              tag: latest
+              repository: crocodilestick/calibre-web-automated
+              tag: V2.1.2
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -32,6 +32,16 @@ spec:
               fsGroupChangePolicy: "Always"
             env:
               TZ: America/Toronto
+              PUID: 0
+              PGID: 0
+              DOCKER_MODS: lscr.io/linuxserver/mods:universal-calibre-v7.16.0
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8083
 
     ingress:
       main:
@@ -39,30 +49,34 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
         hosts:
-          - host: "lazylibrarian.${domain}"
+          - host: "books.${domain}"
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   identifier: main
-    service:
-      main:
-        controller: main
-        ports:
-          http:
-            port: 5299
 
     persistence:
       config:
         enabled: true
-        existingClaim: lazylibrarian-config
-      media:
+        existingClaim: calibre-web-automated-config
+
+      ingest:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /gargantua/
+            path: /gargantua/media/books/import
         globalMounts:
-          - path: /gargantua
-            readOnly: false
+          - path: /cwa-book-ingest
+
+      library:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/media/books/library
+        globalMounts:
+          - path: /calibre-library

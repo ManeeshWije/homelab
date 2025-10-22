@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: lazylibrarian-config
+  name: calibre-web-automated-config
   namespace: media
 spec:
   accessModes:
