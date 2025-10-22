@@ -69,7 +69,7 @@ spec:
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /gargantua/media/books/import
+            path: /gargantua/Downloads
         globalMounts:
           - path: /cwa-book-ingest
             readOnly: false

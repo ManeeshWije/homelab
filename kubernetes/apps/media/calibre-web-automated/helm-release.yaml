@@ -67,7 +67,7 @@ spec:
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /gargantua/media/books/import
+            path: /gargantua/Downloads
         globalMounts:
           - path: /cwa-book-ingest
 
@@ -77,6 +77,6 @@ spec:
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /gargantua/media/books/library
+            path: /gargantua/media/books
         globalMounts:
           - path: /calibre-library
