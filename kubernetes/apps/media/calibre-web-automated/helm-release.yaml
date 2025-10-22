@@ -46,8 +46,6 @@ spec:
     ingress:
       main:
         enabled: true
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
         hosts:
           - host: "books.${domain}"
             paths:
