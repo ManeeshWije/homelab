@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/faustvii/readarr
-              tag: 0.9.0
+              tag: latest
             securityContext:
               fsGroup: 0
               runAsUser: 0
