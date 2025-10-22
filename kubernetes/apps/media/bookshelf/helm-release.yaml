@@ -50,7 +50,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 8788
+            port: 8787
 
     persistence:
       config:
