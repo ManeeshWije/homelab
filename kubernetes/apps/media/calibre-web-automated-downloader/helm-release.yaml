@@ -23,8 +23,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/calibrain/calibre-web-automated-book-downloader
-              tag: "20250815" # keep quoted, avoids float parsing issue
+              repository: maneeshwije/calibre-web-automated-book-downloader
+              tag: latest
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -37,7 +37,7 @@ spec:
           bypass:
             enabled: true
             image:
-              repository: ghcr.io/sarperavci/cloudflarebypassforscraping
+              repository: maneeshwije/cloudflarebypassforscraping
               tag: latest
 
     service:
