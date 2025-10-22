@@ -24,7 +24,8 @@ spec:
       dashboard:
         enabled: false
     observability:
-      traceVerbosity: "INFO"
+      tracing:
+        enabled: false
     ports:
       web:
         redirections:
