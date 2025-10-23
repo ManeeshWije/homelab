@@ -30,32 +30,32 @@ data:
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: radarr
-                    icon: si:radarr
+                    icon: sh:radarr-dark
                     url: https://radarr.${domain}
                     check-url: http://radarr.media.svc.cluster.local:7878
                     same-tab: true
                   - title: sonarr
-                    icon: si:sonarr
+                    icon: sh:sonarr-dark
                     url: https://sonarr.${domain}
                     check-url: http://sonarr.media.svc.cluster.local:8989
                     same-tab: true
                   - title: prowlarr
-                    icon: sh:prowlarr
+                    icon: sh:prowlarr-dark
                     url: https://prowalarr.${domain}
                     check-url: http://prowlarr.media.svc.cluster.local:9696
                     same-tab: true
                   - title: flaresolverr
-                    icon: sh:flaresolverr
+                    icon: sh:flaresolverr-dark
                     url: https://flaresolverr.${domain}
                     check-url: http://flaresolverr.media.svc.cluster.local:8191
                     same-tab: true
                   - title: jellyfin
-                    icon: si:jellyfin
+                    icon: sh:jellyfin-dark
                     url: https://jellyfin.${domain}
                     check-url: http://jellyfin.media.svc.cluster.local:8096
                     same-tab: true
                   - title: calibre-web
-                    icon: sh:calibre-web
+                    icon: sh:calibre-web-dark
                     url: https://books.${domain}
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
@@ -65,14 +65,14 @@ data:
                     check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
                     same-tab: true
                   - title: qbittorrent
-                    icon: si:qbittorrent
+                    icon: sh:qbittorrent-dark
                     url: https://qb.${domain}
                     check-url: http://qbittorrent.media.svc.cluster.local:8080
                     same-tab: true
                   - title: vaultwarden
-                    icon: sh:kVaultwarden
+                    icon: sh:vaultwarden-dark
                     url: https://vw.${domain}
-                    check-url: http://vw.utils.svc.cluster.local:3012
+                    check-url: http://vw.utils.svc.cluster.local:80
                     same-tab: true
           - size: full
             widgets:
