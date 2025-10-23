@@ -39,30 +39,36 @@ data:
                     url: https://sonarr.${domain}
                     check-url: http://sonarr.media.svc.cluster.local:8989
                     same-tab: true
+                  - title: prowlarr
+                    icon: sh:Prowlarr
+                    url: https://prowalarr.${domain}
+                    check-url: http://prowlarr.media.svc.cluster.local:9696
+                    same-tab: true
+                    icon: sh:FlareSolverr
+                    url: https://flaresolverr.${domain}
+                    check-url: http://flaresolverr.media.svc.cluster.local:8191
+                    same-tab: true
                   - title: jellyfin
                     icon: si:jellyfin
                     url: https://jellyfin.${domain}
                     check-url: http://jellyfin.media.svc.cluster.local:8096
                     same-tab: true
+                  - title: calibre-web-automated
+                    icon: sh:Calibre-Web
+                    url: https://books.${domain}
+                    check-url: http://calibre-web-automated.media.svc.cluster.local:8083
+                  - title: calibre-web-automated-downloader
+                    icon: sh:Calibre-Web-Automated-Book-Downloader
+                    url: https://getbooks.${domain}
+                    check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
                   - title: qbittorrent
                     icon: si:qbittorrent
                     url: https://qb.${domain}
                     check-url: http://qbittorrent.media.svc.cluster.local:8080
-                  - title: transmission
-                    icon: si:transmission
-                    url: https://transmission.${domain}
-                    check-url: http://transmission.media.svc.cluster.local:9091
-                  - title: freshrss
-                    icon: /assets/freshrss.png
-                    url: https://freshrss.${domain}
-                    check-url: http://freshrss.utils.svc.cluster.local:80
-                    same-tab: true
-                  - title: ollama
-                    icon: si:ollama
-                    url: https://ollama.${domain}
-                    check-url: http://ollama-main.utils.svc.cluster.local:8080
-                    same-tab: true
-
+                  - title: vaultwarden
+                    icon: sh:kVaultwarden
+                    url: https://vw.${domain}
+                    check-url: http://vw.utils.svc.cluster.local:3012
           - size: full
             widgets:
               - type: search
