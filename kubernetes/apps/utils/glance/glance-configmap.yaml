@@ -44,6 +44,7 @@ data:
                     url: https://prowalarr.${domain}
                     check-url: http://prowlarr.media.svc.cluster.local:9696
                     same-tab: true
+                  - title: flaresolverr
                     icon: sh:FlareSolverr
                     url: https://flaresolverr.${domain}
                     check-url: http://flaresolverr.media.svc.cluster.local:8191
@@ -57,18 +58,22 @@ data:
                     icon: sh:Calibre-Web
                     url: https://books.${domain}
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
+                    same-tab: true
                   - title: calibre-web-automated-downloader
                     icon: sh:Calibre-Web-Automated-Book-Downloader
                     url: https://getbooks.${domain}
                     check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
+                    same-tab: true
                   - title: qbittorrent
                     icon: si:qbittorrent
                     url: https://qb.${domain}
                     check-url: http://qbittorrent.media.svc.cluster.local:8080
+                    same-tab: true
                   - title: vaultwarden
                     icon: sh:kVaultwarden
                     url: https://vw.${domain}
                     check-url: http://vw.utils.svc.cluster.local:3012
+                    same-tab: true
           - size: full
             widgets:
               - type: search
