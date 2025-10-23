@@ -40,12 +40,12 @@ data:
                     check-url: http://sonarr.media.svc.cluster.local:8989
                     same-tab: true
                   - title: prowlarr
-                    icon: sh:Prowlarr
+                    icon: sh:prowlarr
                     url: https://prowalarr.${domain}
                     check-url: http://prowlarr.media.svc.cluster.local:9696
                     same-tab: true
                   - title: flaresolverr
-                    icon: sh:FlareSolverr
+                    icon: sh:flaresolverr
                     url: https://flaresolverr.${domain}
                     check-url: http://flaresolverr.media.svc.cluster.local:8191
                     same-tab: true
@@ -54,13 +54,13 @@ data:
                     url: https://jellyfin.${domain}
                     check-url: http://jellyfin.media.svc.cluster.local:8096
                     same-tab: true
-                  - title: calibre-web-automated
-                    icon: sh:Calibre-Web
+                  - title: calibre-web
+                    icon: sh:calibre-web
                     url: https://books.${domain}
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
-                  - title: calibre-web-automated-downloader
-                    icon: sh:Calibre-Web-Automated-Book-Downloader
+                  - title: calibre-web-downloader
+                    icon: sh:calibre-web-automated-book-downloader
                     url: https://getbooks.${domain}
                     check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
                     same-tab: true
