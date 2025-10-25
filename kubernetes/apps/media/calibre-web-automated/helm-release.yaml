@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: crocodilestick/calibre-web-automated
-              tag: dev@sha256:cbf880e3648fe09a8d2795aa6df628a2b6180d10260983599d47a6eb28ad4491
+              tag: latest
             securityContext:
               fsGroup: 0
               runAsUser: 0
