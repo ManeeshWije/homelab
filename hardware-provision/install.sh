@@ -25,6 +25,25 @@ if [[ "$FIRST_NODE" == "yes" ]]; then
       --user "$USERNAME" \
       --local-path "$HOME/.kube/config" \
       --merge \
+
+    if [[ -z "${GITHUB_TOKEN}" ]]; then
+      read -rp "GitHub PAT: " GITHUB_TOKEN
+      export GITHUB_TOKEN
+    fi
+
+    helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
+      --namespace flux-system
+
+    kubectl apply -f flux-instance.yaml 
+
+    if [[ -z "${KEY_FP}" ]]; then
+      read -rp "GPG Key Fingerprint: " KEY_FP
+    fi
+
+    gpg --export-secret-keys --armor "${KEY_FP}" | \
+      kubectl create secret generic sops-gpg \
+      --namespace=flux-system \
+      --from-file=sops.asc=/dev/stdin
 else
     echo "BEFORE YOU ADD NODES, ENSURE KUBE-VIP IS SETUP FIRST"
     read -rp "Enter the IP address of this node: " IP
@@ -39,22 +58,3 @@ else
       --user "$USERNAME"
 fi
 
-if [[ -z "${GITHUB_TOKEN}" ]]; then
-  read -rp "GitHub PAT: " GITHUB_TOKEN
-  export GITHUB_TOKEN
-fi
-
-flux bootstrap github \
-  --owner=ManeeshWije \
-  --repository=homelab \
-  --path=kubernetes/flux-bootstrap \
-  --branch=main
-
-if [[ -z "${KEY_FP}" ]]; then
-  read -rp "GPG Key Fingerprint: " KEY_FP
-fi
-
-gpg --export-secret-keys --armor "${KEY_FP}" | \
-  kubectl create secret generic sops-gpg \
-  --namespace=flux-system \
-  --from-file=sops.asc=/dev/stdin
