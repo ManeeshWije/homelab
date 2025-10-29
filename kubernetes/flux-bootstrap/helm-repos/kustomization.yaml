@@ -15,3 +15,4 @@ resources:
   - kubito.yaml
   - minecraft-server-charts.yaml
   - truecharts.yaml
+  - mojo2600.yaml
