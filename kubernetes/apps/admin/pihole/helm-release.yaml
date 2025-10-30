@@ -20,6 +20,7 @@ spec:
   values:
     image:
       repository: pihole/pihole
+      tag: latest
       pullPolicy: IfNotPresent
 
     ingress:
