@@ -4,9 +4,7 @@ kind: Kustomization
 resources:
   - traefik
   - cloudflare-ddns
-  - postgresql
   - kubewall
   - capacitor
   - authelia
   - wireguard
-  - pihole

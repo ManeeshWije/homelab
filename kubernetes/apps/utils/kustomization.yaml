@@ -6,3 +6,5 @@ resources:
   - glance
   # - ollama
   - vaultwarden
+  - pihole
+  - postgres
