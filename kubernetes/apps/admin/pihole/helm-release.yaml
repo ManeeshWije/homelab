@@ -44,6 +44,13 @@ spec:
         DOH_UPSTREAM: "https://1.1.1.1/dns-query"
       }
 
+    dnsmasq:
+      enableCustomDnsMasq: true
+      customDnsEntries:
+      - address=/${domain}/${traefik_load_balancer_ip}
+      - address=/*.${domain}/${traefik_load_balancer_ip}
+      - address=/.${domain}/${traefik_load_balancer_ip}
+
     persistentVolumeClaim:
       enabled: true
       existingClaim: pihole-config
