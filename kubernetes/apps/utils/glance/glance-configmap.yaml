@@ -32,7 +32,7 @@ data:
                   - title: pihole
                     icon: sh:pihole-light
                     url: https://pihole.${domain}/admin
-                    check-url: http://pihole.admin.svc.cluster.local:49321
+                    check-url: http://pihole.admin.svc.cluster.local:80
                     same-tab: true
                   - title: radarr
                     icon: sh:radarr-light
@@ -77,7 +77,7 @@ data:
                   - title: vaultwarden
                     icon: sh:vaultwarden-light
                     url: https://vw.${domain}
-                    check-url: http://vw.utils.svc.cluster.local:3012
+                    check-url: http://vw.utils.svc.cluster.local:80
                     same-tab: true
           - size: full
             widgets:
