@@ -30,7 +30,7 @@ data:
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
                   - title: pihole
-                    icon: sh:pihole-light
+                    icon: sh:piholevault-light
                     url: https://pihole.${domain}/admin
                     check-url: http://pihole.admin.svc.cluster.local:80
                     same-tab: true
