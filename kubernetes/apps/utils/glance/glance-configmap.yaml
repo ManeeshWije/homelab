@@ -21,11 +21,11 @@ data:
                 title: Services
                 sites:
                   - title: wijeproject
-                    icon: /assets/wijeproject.jpg
+                    icon: /assets/logo.jpg
                     url: https://${domain}
                     same-tab: true
                   - title: watch-together
-                    icon: /assets/watch-together.png
+                    icon: sh:youtube-light
                     url: https://watch.${domain}
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
@@ -64,7 +64,7 @@ data:
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
                   - title: calibre-web-downloader
-                    icon: sh:calibre-web-automated-book-downloader
+                    icon: /assets/calibre-web-automated-book-downloader.jpg
                     url: https://getbooks.${domain}
                     check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
                     same-tab: true
