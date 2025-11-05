@@ -146,8 +146,8 @@ data:
               - type: releases
                 cache: 1d
                 repositories:
-                  - swaywm/sway
+                  - hyprwm/Hyprland
                   - neovim/neovim
+                  - alacritty/alacritty
                   - sxyazi/yazi
                   - syncthing/syncthing
-                  - wezterm/wezterm
