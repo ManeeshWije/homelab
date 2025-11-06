@@ -64,7 +64,7 @@ data:
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
                   - title: calibre-web-downloader
-                    icon: /assets/calibre-web-automated-book-downloader.jpg
+                    icon: /assets/calibre-web-automated-book-downloader.png
                     url: https://getbooks.${domain}
                     check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
                     same-tab: true
