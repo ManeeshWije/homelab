@@ -5,6 +5,7 @@ resources:
   - jellyfin
   - radarr
   - sonarr
+  - lidarr
   - prowlarr
   - flaresolverr
   # - transmission
