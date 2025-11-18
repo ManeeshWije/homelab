@@ -43,6 +43,11 @@ data:
                     url: https://sonarr.${domain}
                     check-url: http://sonarr.media.svc.cluster.local:8989
                     same-tab: true
+                  - title: lidarr
+                    icon: sh:lidarr-light
+                    url: https://lidarr.${domain}
+                    check-url: http://lidarr.media.svc.cluster.local:8686
+                    same-tab: true
                   - title: prowlarr
                     icon: sh:prowlarr-light
                     url: https://prowalarr.${domain}
