@@ -5,5 +5,4 @@ resources:
   - admin
   - projects
   - utils
-  # - games
   - media

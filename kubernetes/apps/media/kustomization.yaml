@@ -8,8 +8,6 @@ resources:
   - lidarr
   - prowlarr
   - flaresolverr
-  # - transmission
   - qbittorrent
-  # - cleanuparr
   - calibre-web-automated
   - calibre-web-automated-downloader
