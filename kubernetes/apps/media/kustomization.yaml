@@ -10,6 +10,6 @@ resources:
   - flaresolverr
   # - transmission
   - qbittorrent
-  - cleanuparr
+  # - cleanuparr
   - calibre-web-automated
   - calibre-web-automated-downloader

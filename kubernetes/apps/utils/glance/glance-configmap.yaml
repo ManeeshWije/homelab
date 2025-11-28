@@ -50,7 +50,7 @@ data:
                     same-tab: true
                   - title: prowlarr
                     icon: sh:prowlarr-light
-                    url: https://prowalarr.${domain}
+                    url: https://prowlarr.${domain}
                     check-url: http://prowlarr.media.svc.cluster.local:9696
                     same-tab: true
                   - title: flaresolverr
