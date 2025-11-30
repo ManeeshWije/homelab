@@ -1,0 +1,70 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: lidatube
+  namespace: media
+spec:
+  interval: 5m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: thewicklowwolf/lidatube
+              tag: latest
+            securityContext:
+              fsGroup: 0
+              runAsUser: 0
+              runAsGroup: 0
+              fsGroupChangePolicy: "Always"
+            env:
+              lidarr_address: "http://lidarr.media.svc.cluster.local:8686"
+              lidarr_api_key: "${lidarr_api_key}"
+
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
+        hosts:
+          - host: "lidarr.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8686
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: lidarr-config
+      media:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/
+        globalMounts:
+          - path: /gargantua
+            readOnly: false
