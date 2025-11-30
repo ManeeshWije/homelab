@@ -41,7 +41,7 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd"
         hosts:
-          - host: "lidarr.${domain}"
+          - host: "lidatube.${domain}"
             paths:
               - path: /
                 pathType: Prefix
