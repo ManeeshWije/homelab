@@ -52,12 +52,12 @@ spec:
         controller: main
         ports:
           http:
-            port: 8686
+            port: 5000
 
     persistence:
       config:
         enabled: true
-        existingClaim: lidarr-config
+        existingClaim: lidatube-config
       media:
         enabled: true
         type: custom
