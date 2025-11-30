@@ -59,17 +59,32 @@ spec:
           http:
             port: 5000
 
-    persistence:
-      config:
-        enabled: true
-        existingClaim: lidatube-config
-      media:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: "${storage_host_ip}"
-            path: /gargantua/
-        globalMounts:
-          - path: /gargantua
-            readOnly: false
+    # persistence:
+    #   config:
+    #     enabled: true
+    #     existingClaim: lidatube-config
+    #   media:
+    #     enabled: true
+    #     type: custom
+    #     volumeSpec:
+    #       nfs:
+    #         server: "${storage_host_ip}"
+    #         path: /gargantua/
+    #     globalMounts:
+    #       - path: /gargantua
+    #         readOnly: false
+
+      persistence:
+        config:
+          enabled: true
+          existingClaim: lidatube-config
+        downloads:
+          enabled: true
+          type: custom
+          volumeSpec:
+            nfs:
+              server: "${storage_host_ip}"
+              path: /gargantua/Downloads
+          globalMounts:
+            - path: /lidatube/downloads
+              readOnly: false
