@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: adguard
+  namespace: utils
+spec:
+  interval: 10m
+  upgrade:
+    force: true
+  chart:
+    spec:
+      chart: app-template
+      version: 4.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-labs
+        namespace: flux-system
+      interval: 5m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: adguard/adguardhome
+              tag: latest
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: "adguard.${domain}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+    service:
+      main:
+        controller: main
+        ports:
+          dns:
+            port: 53
+            enabled: true
+          http:
+            port: 80
+            enabled: true
+          http-initial:
+            port: 3000
+            enabled: true
+    persistence:
+      adguard-data:
+        enabled: true
+        existingClaim: adguard-config
