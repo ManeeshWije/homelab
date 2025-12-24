@@ -35,6 +35,7 @@ spec:
                 pathType: Prefix
                 service:
                   identifier: main
+                  port: http
     service:
       main:
         controller: main
