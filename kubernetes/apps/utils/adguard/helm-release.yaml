@@ -39,6 +39,8 @@ spec:
     service:
       main:
         controller: main
+        type: LoadBalancer
+        loadBalancerIP: ${adguard_host}
         ports:
           dns:
             port: 53
