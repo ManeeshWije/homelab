@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - glance
   - vaultwarden
-  # - pihole
+  - pihole
   - postgresql
-  - adguard
+  # - adguard
