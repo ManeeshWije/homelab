@@ -73,7 +73,7 @@ spec:
             image:
               # repository: ghcr.io/bjw-s-labs/gluetun-qb-port-sync
               repository: ghcr.io/t-anc/gsp-qbittorent-gluetun-sync-port-mod
-              tag: latest
+              tag: main
             env:
               # GLUETUN_CONTROL_SERVER_HOST: localhost
               GSP_GTN_ADDR: http://localhost:8000
