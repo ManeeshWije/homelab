@@ -62,6 +62,9 @@ spec:
       config:
         enabled: true
         existingClaim: lidatube-config
+        globalMounts:
+          - path: /lidatube/config
+            readOnly: false
       downloads:
         enabled: true
         type: custom
