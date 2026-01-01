@@ -20,7 +20,6 @@ spec:
   values:
     image:
       repository: ghcr.io/wg-easy/wg-easy
-      pullPolicy: IfNotPresent
       tag: 15@sha256:bb8152762c36f824eb42bb2f3c5ab8ad952818fbef677d584bc69ec513b251b0
     securityContext:
       container:
@@ -35,48 +34,20 @@ spec:
             - NET_ADMIN
             - NET_RAW
             - SYS_MODULE
-    # service:
-    #   vpn:
-    #     loadBalancerIP: ${wg_host}
-    #     type: LoadBalancer
-    #     externalTrafficPolicy: Local
-    # workload:
-    #   main:
-    #     podSpec:
-    #       nodeSelector:
-    #         kubernetes.io/arch: arm64
-    #       containers:
-    #         main:
-    #           env:
-    #             INSECURE: "true"
     service:
-      main:
-        ports:
-          main:
-            port: 51821
       vpn:
-        enabled: true
-        ports:
-          vpn:
-            enabled: true
-            protocol: udp
-            port: 51820
+        loadBalancerIP: ${wg_host}
+        type: LoadBalancer
+        externalTrafficPolicy: Local
     workload:
       main:
         podSpec:
+          nodeSelector:
+            kubernetes.io/arch: arm64
           containers:
             main:
-              probes:
-                liveness:
-                  type: tcp
-                readiness:
-                  type: tcp
-                startup:
-                  type: tcp
               env:
-                HOST: "0.0.0.0"
-                PORT: "{{ .Values.service.main.ports.main.port }}"
-                INSECURE: false
+                INSECURE: "true"
     persistence:
       config:
         enabled: true
