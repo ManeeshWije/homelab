@@ -28,7 +28,7 @@ spec:
       reclaimPolicy: Retain
 
     defaultSettings:
-      backupTarget: nfs://${storage_host_ip}:/gargantua/pimaster
+      backupTarget: nfs://${storage_host_ip}:/gargantua/tars
       backupConcurrentLimit: "1"
       concurrentAutomaticEngineUpgradePerNodeLimit: "1"
 
