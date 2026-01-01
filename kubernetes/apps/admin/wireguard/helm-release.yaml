@@ -47,15 +47,7 @@ spec:
       loadBalancerIP: ${wg_host}
       externalTrafficPolicy: Local
 
-    # persistence:
-    #   config:
-    #     enabled: true
-    #     mountPath: "/etc/wireguard"
-    #     existingClaim: wireguard-config
-
     volume:
       enabled: true
-      className: ""
+      className: "wireguard-config"
       size: 1Gi
-      existingClaim: wireguard-config
-      mountPath: /etc/wireguard
