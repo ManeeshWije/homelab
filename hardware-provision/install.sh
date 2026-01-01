@@ -21,7 +21,7 @@ if [[ "$FIRST_NODE" == "yes" ]]; then
       --cluster \
       --k3s-channel latest \
       --k3s-extra-args "--disable servicelb --disable traefik" \
-      --ssh-key "$HOME/.ssh/id_ed25519"
+      --ssh-key "$HOME/.ssh/id_ed25519" \
       --user "$USERNAME" \
       --local-path "$HOME/.kube/config" \
       --merge \
@@ -32,7 +32,8 @@ if [[ "$FIRST_NODE" == "yes" ]]; then
     fi
 
     helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
-      --namespace flux-system
+      --namespace flux-system \
+      --create-namespace
 
     kubectl apply -f flux-instance.yaml 
 
