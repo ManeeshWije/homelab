@@ -18,9 +18,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    serviceAccount:
-      create: true
-      name: capacitor
     controllers:
       main:
         containers:
@@ -28,6 +25,9 @@ spec:
             image:
               repository: ghcr.io/gimlet-io/capacitor
               tag: v0.4.8
+    serviceAccount:
+      create: true
+      name: capacitor
     ingress:
       main:
         enabled: true
