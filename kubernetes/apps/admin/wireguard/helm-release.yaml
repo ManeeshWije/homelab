@@ -35,20 +35,48 @@ spec:
             - NET_ADMIN
             - NET_RAW
             - SYS_MODULE
+    # service:
+    #   vpn:
+    #     loadBalancerIP: ${wg_host}
+    #     type: LoadBalancer
+    #     externalTrafficPolicy: Local
+    # workload:
+    #   main:
+    #     podSpec:
+    #       nodeSelector:
+    #         kubernetes.io/arch: arm64
+    #       containers:
+    #         main:
+    #           env:
+    #             INSECURE: "true"
     service:
+      main:
+        ports:
+          main:
+            port: 51821
       vpn:
-        loadBalancerIP: ${wg_host}
-        type: LoadBalancer
-        externalTrafficPolicy: Local
+        enabled: true
+        ports:
+          vpn:
+            enabled: true
+            protocol: udp
+            port: 51820
     workload:
       main:
         podSpec:
-          nodeSelector:
-            kubernetes.io/arch: arm64
           containers:
             main:
+              probes:
+                liveness:
+                  type: tcp
+                readiness:
+                  type: tcp
+                startup:
+                  type: tcp
               env:
-                INSECURE: "true"
+                HOST: "0.0.0.0"
+                PORT: "{{ .Values.service.main.ports.main.port }}"
+                INSECURE: false
     persistence:
       config:
         enabled: true
