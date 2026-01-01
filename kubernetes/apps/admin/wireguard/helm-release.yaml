@@ -47,18 +47,15 @@ spec:
       loadBalancerIP: ${wg_host}
       externalTrafficPolicy: Local
 
-    # workload:
-    #   main:
-    #     podSpec:
-    #       nodeSelector:
-    #         kubernetes.io/arch: arm64
-    #       containers:
-    #         main:
-    #           env:
-    #             INSECURE: "true"
+    # persistence:
+    #   config:
+    #     enabled: true
+    #     mountPath: "/etc/wireguard"
+    #     existingClaim: wireguard-config
 
-    persistence:
-      config:
-        enabled: true
-        mountPath: "/etc/wireguard"
-        existingClaim: wireguard-config
+    volume:
+      enabled: true
+      className: ""
+      size: 1Gi
+      existingClaim: wireguard-config
+      mountPath: /etc/wireguard
