@@ -32,13 +32,14 @@ spec:
               fsGroupChangePolicy: "Always"
             env:
               TZ: America/Toronto
-              CLOUDFLARE_PROXY_BYPASS: http://localhost:8000
+              # CLOUDFLARE_PROXY_BYPASS: http://localhost:8000
+              EXT_BYPASSER_URL: https://flaresolverr.${domain}
 
-          bypass:
-            enabled: true
-            image:
-              repository: maneeshwije/cloudflarebypassforscraping
-              tag: latest
+          # bypass:
+          #   enabled: true
+          #   image:
+          #     repository: maneeshwije/cloudflarebypassforscraping
+          #     tag: latest
 
     service:
       main:
