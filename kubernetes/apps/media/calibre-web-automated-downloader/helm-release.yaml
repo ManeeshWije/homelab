@@ -23,7 +23,7 @@ spec:
         containers:
           main:
             image:
-              repository: maneeshwije/calibre-web-automated-book-downloader
+              repository: ghcr.io/calibrain/calibre-web-automated-book-downloader
               tag: latest
             securityContext:
               fsGroup: 0
