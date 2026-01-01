@@ -35,8 +35,6 @@ if [[ "$FIRST_NODE" == "yes" ]]; then
       --namespace flux-system \
       --create-namespace
 
-    kubectl apply -f flux-instance.yaml 
-
     if [[ -z "${KEY_FP}" ]]; then
       read -rp "GPG Key Fingerprint: " KEY_FP
     fi
@@ -45,6 +43,19 @@ if [[ "$FIRST_NODE" == "yes" ]]; then
       kubectl create secret generic sops-gpg \
       --namespace=flux-system \
       --from-file=sops.asc=/dev/stdin
+
+    kubectl -n flux-system create secret generic flux-system \
+      --from-literal=username="ManeeshWije" \
+      --from-literal=password="${GITHUB_TOKEN}"
+
+    kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v3.6/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+
+    kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v3.6/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml
+
+    kubectl apply -f kubernetes/first/namespaces/admin.yaml
+
+    kubectl apply -f kubernetes/flux-bootstrap/flux-instance.yaml 
+
 else
     echo "BEFORE YOU ADD NODES, ENSURE KUBE-VIP IS SETUP FIRST"
     read -rp "Enter the IP address of this node: " IP

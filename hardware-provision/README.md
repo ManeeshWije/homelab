@@ -5,3 +5,11 @@
 - Since we are also using NVME hats, we should add this flag inside `/boot/firmware/config.txt`
   - dtparam=pciex1_gen=3
 - If using wireless and router does auto band switching from 2.4ghz to 5ghz, make sure you edit NetworkManager settings to prefer one
+- Might need to install these on the rpi node for longhorn
+    ```
+    sudo apt update
+    sudo apt install -y open-iscsi
+    sudo systemctl enable iscsid
+    sudo systemctl start iscsid
+    sudo apt install -y nfs-common
+    ```
