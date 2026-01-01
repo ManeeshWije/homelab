@@ -2,10 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: truecharts
+  name: hansehe
   namespace: flux-system
 spec:
-  type: oci
-  url: oci://tccr.io/truecharts/
+  url: https://raw.githubusercontent.com/hansehe/wg-easy-helm/master/helm/charts
   interval: 15m
   timeout: 10m
