@@ -13,7 +13,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: main
-              image: maneeshwije/awpa:arm64-latest
+              image: maneeshwije/awpa:latest-arm64
               env:
                 - name: GMAIL_USER
                   valueFrom:
