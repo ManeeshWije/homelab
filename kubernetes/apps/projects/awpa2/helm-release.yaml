@@ -46,7 +46,12 @@ spec:
                 - name: amazon-session
                   mountPath: /app/amazon.json
                   subPath: amazon.json
+                - name: data
+                  mountPath: /app
           volumes:
             - name: amazon-session
               secret:
                 secretName: awpa2-secrets
+            - name: data
+              persistentVolumeClaim:
+                claimName: awpa2-data
