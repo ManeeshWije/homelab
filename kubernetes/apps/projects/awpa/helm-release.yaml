@@ -42,6 +42,11 @@ spec:
                     secretKeyRef:
                       name: awpa-secrets
                       key: URL
+                - name: DELTA
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa-secrets
+                      key: DELTA
               volumeMounts:
                 - name: amazon-session
                   mountPath: /app/amazon.json
