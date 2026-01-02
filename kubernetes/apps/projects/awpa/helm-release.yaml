@@ -4,7 +4,8 @@ metadata:
   name: awpa
   namespace: projects
 spec:
-  schedule: "0 7 * * *"  # daily at 7am
+  # schedule: "0 7 * * *"  # daily at 7am
+  schedule: "* * * * *"  # test
   jobTemplate:
     spec:
       template:
