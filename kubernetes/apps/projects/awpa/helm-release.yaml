@@ -4,8 +4,8 @@ metadata:
   name: awpa
   namespace: projects
 spec:
-  # schedule: "0 7 * * *"  # Every day at 7am
-  schedule: "* * * * *"  # test
+  schedule: "0 7 * * *"  # Every day at 7am
+  # schedule: "* * * * *"  # test
   jobTemplate:
     spec:
       template:
@@ -13,7 +13,8 @@ spec:
           restartPolicy: Never
           containers:
             - name: main
-              image: maneeshwije/awpa:latest-arm64
+              image: maneeshwije/awpa
+              tag: arm64-latest
               env:
                 - name: GMAIL_USER
                   valueFrom:
