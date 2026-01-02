@@ -20,6 +20,11 @@ spec:
                     secretKeyRef:
                       name: awpa-secrets
                       key: GMAIL_USER
+                - name: TO_GMAIL_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa-secrets
+                      key: TO_GMAIL_USER
                 - name: GMAIL_PASS
                   valueFrom:
                     secretKeyRef:
