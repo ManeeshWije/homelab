@@ -1,3 +1,4 @@
+---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -5,12 +6,18 @@ metadata:
   namespace: projects
 spec:
   schedule: "0 7 * * *"  # Every day at 7am
-  # schedule: "* * * * *"  # test
   jobTemplate:
     spec:
       template:
         spec:
           restartPolicy: Never
+          initContainers:
+            - name: init-prices
+              image: busybox:latest
+              command: ["sh", "-c", "touch /data/prices.csv"]
+              volumeMounts:
+                - name: data
+                  mountPath: /data
           containers:
             - name: main
               image: maneeshwije/awpa:latest
