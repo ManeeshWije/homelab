@@ -4,7 +4,8 @@ metadata:
   name: awpa2
   namespace: projects
 spec:
-  schedule: "0 7 * * *"  # daily at 7am
+  schedule: "0 7 * * *"  # Every day at 7am
+  # schedule: "* * * * *"  # test
   jobTemplate:
     spec:
       template:
@@ -13,9 +14,6 @@ spec:
           containers:
             - name: main
               image: maneeshwije/awpa:latest
-              command: ["/bin/sh", "-c"]
-              args:
-                - sops --decrypt /secrets/amazon.json.enc > /app/amazon.json && node dist/scrape.js
               env:
                 - name: GMAIL_USER
                   valueFrom:
@@ -34,8 +32,8 @@ spec:
                       key: URL
               volumeMounts:
                 - name: amazon-session
-                  mountPath: /secrets/amazon.json.enc
-                  subPath: amazon.json.enc
+                  mountPath: /app/amazon.json
+                  subPath: amazon.json
           volumes:
             - name: amazon-session
               secret:
