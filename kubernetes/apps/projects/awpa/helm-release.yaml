@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: awpa
+  namespace: projects
+spec:
+  schedule: "0 7 * * *"  # daily at 7am
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: main
+              image: maneeshwije/awpa:latest
+              command: ["/bin/sh", "-c"]
+              args:
+                - sops --decrypt /secrets/amazon.json.enc > /app/amazon.json && node dist/scrape.js
+              env:
+                - name: GMAIL_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa-secrets
+                      key: GMAIL_USER
+                - name: GMAIL_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa-secrets
+                      key: GMAIL_PASS
+                - name: URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa-secrets
+                      key: URL
+              volumeMounts:
+                - name: amazon-session
+                  mountPath: /secrets/amazon.json.enc
+                  subPath: amazon.json.enc
+          volumes:
+            - name: amazon-session
+              secret:
+                secretName: awpa-secrets
