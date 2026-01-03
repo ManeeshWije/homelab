@@ -15,21 +15,21 @@ spec:
             - name: main
               image: maneeshwije/awpa:latest
               env:
-                - name: GMAIL_USER
+                - name: SENDER_EMAIL
                   valueFrom:
                     secretKeyRef:
                       name: awpa-secrets
-                      key: GMAIL_USER
-                - name: TO_GMAIL_USER
+                      key: SENDER_EMAIL
+                - name: RECEIVER_EMAIL
                   valueFrom:
                     secretKeyRef:
                       name: awpa-secrets
-                      key: TO_GMAIL_USER
-                - name: GMAIL_PASS
+                      key: RECEIVER_EMAIL
+                - name: SENDER_PASS
                   valueFrom:
                     secretKeyRef:
                       name: awpa-secrets
-                      key: GMAIL_PASS
+                      key: SENDER_PASS
                 - name: URL
                   valueFrom:
                     secretKeyRef:
