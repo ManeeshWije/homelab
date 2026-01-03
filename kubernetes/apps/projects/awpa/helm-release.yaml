@@ -14,13 +14,6 @@ spec:
           containers:
             - name: main
               image: maneeshwije/awpa:latest
-              command: ["bash", "-c"]
-              args:
-                - |
-                  set -e
-                  node dist/scrape.js
-                  echo "Job finished — sleeping for debugging..."
-                  sleep 3600
               env:
                 - name: SENDER_EMAIL
                   valueFrom:
