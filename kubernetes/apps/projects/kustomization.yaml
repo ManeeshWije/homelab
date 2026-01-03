@@ -6,4 +6,4 @@ resources:
   - site
   - markdown-edit
   - awpa
-  # - awpa2
+  - awpa2
