@@ -11,13 +11,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          initContainers:
-            - name: init-prices
-              image: busybox:latest
-              command: ["sh", "-c", "touch /data/prices.csv"]
-              volumeMounts:
-                - name: data
-                  mountPath: /data
           containers:
             - name: main
               image: maneeshwije/awpa:latest
@@ -47,14 +40,18 @@ spec:
                     secretKeyRef:
                       name: awpa2-secrets
                       key: DELTA
+                - name: DATA_PATH
+                  valueFrom:
+                    secretKeyRef:
+                      name: awpa2-secrets
+                      key: DATA_PATH
               volumeMounts:
                 - name: amazon-session
                   mountPath: /app/amazon.json
                   subPath: amazon.json
 
                 - name: data
-                  mountPath: /app/prices.csv
-                  subPath: prices.csv
+                  mountPath: /data
           volumes:
             - name: amazon-session
               secret:
