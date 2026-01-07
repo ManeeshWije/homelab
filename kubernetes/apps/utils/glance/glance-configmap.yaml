@@ -153,6 +153,6 @@ data:
                 repositories:
                   - hyprwm/Hyprland
                   - neovim/neovim
-                  - alacritty/alacritty
+                  - ghostty-org/ghostty
                   - sxyazi/yazi
                   - syncthing/syncthing
