@@ -12,4 +12,4 @@ resources:
   - qbittorrent
   - calibre-web-automated
   - calibre-web-automated-downloader
-  - lidify
+  # - lidify
