@@ -49,5 +49,5 @@ spec:
 
     volume:
       enabled: true
-      className: "wireguard-wg-easy"
+      className: null
       size: 1Gi
