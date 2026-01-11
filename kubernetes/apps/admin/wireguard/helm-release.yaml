@@ -49,4 +49,5 @@ spec:
 
     volume:
       enabled: true
+      className: longhorn
       size: 1Gi
