@@ -6,8 +6,6 @@ metadata:
   namespace: admin
 spec:
   interval: 10m
-  upgrade:
-    force: true
   chart:
     spec:
       chart: wg-easy
