@@ -5,7 +5,7 @@ metadata:
   name: glance
   namespace: utils
 spec:
-  interval: 10m
+  interval: 5m
   upgrade:
     force: true
   chart:
