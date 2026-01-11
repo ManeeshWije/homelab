@@ -55,11 +55,3 @@ spec:
           - path: /app/config/glance.yml
             subPath: glance.yml
             readOnly: true
-      assets:
-        enabled: true
-        type: persistentVolumeClaim
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        globalMounts:
-          - path: /app/assets

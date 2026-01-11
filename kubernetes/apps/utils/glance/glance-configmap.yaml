@@ -6,8 +6,6 @@ metadata:
   namespace: utils
 data:
   glance.yml: |
-    server:
-      assets-path: /app/assets
     pages:
       - name: Home
         columns:
