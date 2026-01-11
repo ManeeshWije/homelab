@@ -49,5 +49,4 @@ spec:
 
     volume:
       enabled: true
-      className: null
       size: 1Gi
