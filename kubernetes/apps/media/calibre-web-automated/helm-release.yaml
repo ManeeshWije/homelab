@@ -69,7 +69,7 @@ spec:
             server: "${storage_host_ip}"
             path: /gargantua/books-import
         globalMounts:
-          - path: /cwa-book-ingest
+          - path: /books
 
       library:
         enabled: true
