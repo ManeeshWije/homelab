@@ -60,15 +60,15 @@ spec:
         enabled: true
         existingClaim: calibre-web-automated-config
 
-      # ingest:
-      #   enabled: true
-      #   type: custom
-      #   volumeSpec:
-      #     nfs:
-      #       server: "${storage_host_ip}"
-      #       path: /gargantua/books-import
-      #   globalMounts:
-      #     - path: /books
+      ingest:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${storage_host_ip}"
+            path: /gargantua/books-import
+        globalMounts:
+          - path: /cwa-book-ingest
 
       media:
         enabled: true
