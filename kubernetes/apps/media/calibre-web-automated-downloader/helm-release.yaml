@@ -23,8 +23,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/calibrain/calibre-web-automated-book-downloader
-              tag: latest
+              repository: ghcr.io/calibrain/shelfmark-lite
+              tag: v1.0.1
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -66,5 +66,5 @@ spec:
             server: "${storage_host_ip}"
             path: /gargantua/books-import
         globalMounts:
-          - path: /cwa-book-ingest
+          - path: /books
             readOnly: false
