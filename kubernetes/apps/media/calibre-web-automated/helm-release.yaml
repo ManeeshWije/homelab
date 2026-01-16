@@ -23,8 +23,8 @@ spec:
         containers:
           main:
             image:
-              repository: crocodilestick/calibre-web-automated
-              tag: latest
+              repository: ghcr.io/crocodilestick/calibre-web-automated
+              tag: dev@sha256:bcbe733663da0801e9c8c70ee344dc8f4985b9249b1e4714c512bb937532f28a
             securityContext:
               fsGroup: 0
               runAsUser: 0
@@ -34,7 +34,6 @@ spec:
               TZ: America/Toronto
               PUID: 0
               PGID: 0
-              DOCKER_MODS: lscr.io/linuxserver/mods:universal-calibre-v8.13.0
 
     service:
       main:
@@ -80,3 +79,4 @@ spec:
             path: /gargantua/books-library
         globalMounts:
           - path: /calibre-library
+          - readOnly: false
