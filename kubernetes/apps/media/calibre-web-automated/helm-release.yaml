@@ -79,4 +79,4 @@ spec:
             path: /gargantua/books-library
         globalMounts:
           - path: /calibre-library
-          - readOnly: false
+          # - readOnly: false
