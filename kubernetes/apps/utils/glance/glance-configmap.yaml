@@ -66,10 +66,10 @@ data:
                     url: https://books.${domain}
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
-                  - title: calibre-web-downloader
-                    icon: /assets/calibre-web-automated-book-downloader.png
+                  - title: shelfmark
+                    icon: sh:shelfmark
                     url: https://getbooks.${domain}
-                    check-url: http://calibre-web-automated-downloader.media.svc.cluster.local:8084
+                    check-url: http://shelfmark.media.svc.cluster.local:8084
                     same-tab: true
                   - title: qbittorrent
                     icon: sh:qbittorrent-light
@@ -151,6 +151,5 @@ data:
                 repositories:
                   - hyprwm/Hyprland
                   - neovim/neovim
-                  - ghostty-org/ghostty
                   - sxyazi/yazi
                   - syncthing/syncthing
