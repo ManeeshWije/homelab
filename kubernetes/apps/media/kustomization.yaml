@@ -11,5 +11,5 @@ resources:
   - flaresolverr
   - qbittorrent
   - calibre-web-automated
-  - calibre-web-automated-downloader
+  - shelfmark
   # - lidify
