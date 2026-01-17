@@ -67,7 +67,7 @@ data:
                     check-url: http://calibre-web-automated.media.svc.cluster.local:8083
                     same-tab: true
                   - title: shelfmark
-                    icon: sh:shelfmark
+                    icon: di:calibre-web-automated-book-downloader
                     url: https://getbooks.${domain}
                     check-url: http://shelfmark.media.svc.cluster.local:8084
                     same-tab: true
