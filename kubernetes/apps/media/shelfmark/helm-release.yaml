@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: calibre-web-automated-downloader
+  name: shelfmark
   namespace: media
 spec:
   interval: 5m
@@ -57,7 +57,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: calibre-web-automated-downloader-config
+        existingClaim: shelfmark-config
       media:
         enabled: true
         type: custom
