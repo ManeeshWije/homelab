@@ -11,6 +11,8 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          successfulJobsHistoryLimit: 1
+          failedJobsHistoryLimit: 1
           containers:
             - name: main
               image: maneeshwije/awpa:latest
