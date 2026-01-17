@@ -19,7 +19,7 @@ data:
                 title: Services
                 sites:
                   - title: wijeproject
-                    icon: /assets/logo.jpg
+                    icon: sh:dumbterm-light
                     url: https://${domain}
                     same-tab: true
                   - title: watch-together
