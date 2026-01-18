@@ -11,6 +11,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          ttlSecondsAfterFinished: 60
           successfulJobsHistoryLimit: 1
           failedJobsHistoryLimit: 1
           containers:
