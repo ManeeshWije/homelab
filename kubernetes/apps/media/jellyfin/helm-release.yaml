@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: jellyfin/jellyfin
-              tag: 10.11.5
+              tag: 10.11.6
             env:
               TZ: America/Toronto
               DOTNET_USE_POLLING_FILE_WATCHER: "true"
