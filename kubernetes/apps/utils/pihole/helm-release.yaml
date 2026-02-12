@@ -5,7 +5,7 @@ metadata:
   name: pihole
   namespace: utils
 spec:
-  interval: 5m
+  interval: 10m
   upgrade:
     force: true
   chart:
