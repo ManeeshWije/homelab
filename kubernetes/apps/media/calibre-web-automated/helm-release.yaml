@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/crocodilestick/calibre-web-automated
-              tag: dev@sha256:152a9b9cf2a1cc55fdedd8b1dcadd7f42cc17b493ac1207de3caebe72202c85d
+              tag: dev@sha256:c8b7e47449f8c4e9ac370f7e2511108367474572b669aace9d2413bdb43766f7
             securityContext:
               fsGroup: 0
               runAsUser: 0
