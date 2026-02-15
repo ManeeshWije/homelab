@@ -17,6 +17,26 @@ spec:
         name: longhorn
         namespace: flux-system
       interval: 5m
+  # values:
+  #   ingress:
+  #     enabled: true
+  #     host: "longhorn.${domain}"
+  #     annotations:
+  #       traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd,longhorn-system-svc-longhorn-headers@kubernetescrd"
+  #
+  #   persistence:
+  #     reclaimPolicy: Retain
+  #
+  #   defaultSettings:
+  #     backupTarget: nfs://${storage_host_ip}:/gargantua/tars
+  #     backupConcurrentLimit: "1"
+  #     concurrentAutomaticEngineUpgradePerNodeLimit: "1"
+  #
+  #   csi:
+  #     kubeletRootDir: /var/lib/kubelet
+  #
+  #   longhornUI:
+  #     replicas: 1
   values:
     ingress:
       enabled: true
@@ -26,14 +46,70 @@ spec:
 
     persistence:
       reclaimPolicy: Retain
+      defaultClassReplicaCount: 1
+
+    csi:
+      # k3s default
+      kubeletRootDir: /var/lib/kubelet
+      attacherReplicaCount: 1
+      provisionerReplicaCount: 1
+      resizerReplicaCount: 1
+      snapshotterReplicaCount: 1
+
+    longhornUI:
+      replicas: 1
+      resources:
+        limits:
+          cpu: "300m"
+          memory: "128Mi"
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
 
     defaultSettings:
+      # force single replica per volume
+      defaultReplicaCount: "1"
+
+      # reduce background rebuilds that consume RAM/CPU
+      replicaAutoBalance: "disabled"
+      autoSalvage: "false"
+      allowRecurringJobWhileVolumeDetached: "false"
+
+      # further resource tuning
+      storageOverProvisioningPercentage: "100"
+      storageMinimalAvailablePercentage: "10"
+
+      # turn off optional expensive features
+      disableReplicaRebuild: "true"
+      disableRevisionCounter: "true"
+      offlineReplicaRebuilding: "false"
+
       backupTarget: nfs://${storage_host_ip}:/gargantua/tars
       backupConcurrentLimit: "1"
       concurrentAutomaticEngineUpgradePerNodeLimit: "1"
 
-    csi:
-      kubeletRootDir: /var/lib/kubelet
+    # longhorn:
+    #   nodeSelector:
+    #     kubernetes.io/os: linux
+    #   tolerations:
+    #   - key: node-role.kubernetes.io/control-plane
+    #     operator: Exists
+    #     effect: NoSchedule
 
-    longhornUI:
-      replicas: 1
+    manager:
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
+        requests:
+          cpu: "250m"
+          memory: "256Mi"
+
+    instanceManager:
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
+        requests:
+          cpu: "250m"
+          memory: "256Mi"
