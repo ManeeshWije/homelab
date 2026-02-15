@@ -38,7 +38,7 @@ spec:
       
     serviceDns:
       loadBalancerIP: ${pihole_host}
-      loadBalncerIPv6: ${pihole_host_ipv6}
+      loadBalancerIPv6: ${pihole_host_ipv6}
       type: LoadBalancer
       
     doh:
