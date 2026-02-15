@@ -27,9 +27,6 @@ spec:
       hosts:
       - pihole.${domain}
 
-    dualStack:
-      enabled: true
-
     serviceWeb:
       loadBalancerIP: ${pihole_host}
       type: ClusterIP
