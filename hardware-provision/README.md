@@ -13,3 +13,19 @@
     sudo systemctl start iscsid
     sudo apt install -y nfs-common
     ```
+- dnsmasq config
+    ```
+    port=53
+    domain-needed
+    bogus-priv
+    listen-address=::1,127.0.0.1,192.168.40.49
+    address=/wijeproject.com/192.168.40.49
+    address=/*.wijeproject.com/192.168.40.49
+    address=/.wijeproject.com/192.168.40.49
+    local=/wijeproject.com/
+    expand-hosts
+    domain=wijeproject.com
+    server=8.8.8.8
+    server=8.8.4.4
+    cache-size=4000
+    ```
