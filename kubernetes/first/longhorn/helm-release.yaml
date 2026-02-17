@@ -73,6 +73,8 @@ spec:
       # force single replica per volume
       defaultReplicaCount: "1"
 
+      allowDowngrade: "true"
+
       # reduce background rebuilds that consume RAM/CPU
       replicaAutoBalance: "disabled"
       autoSalvage: "false"
