@@ -8,6 +8,7 @@ spec:
   interval: 5m
   upgrade:
     force: true
+    disableHooks: true
   chart:
     spec:
       chart: longhorn
