@@ -8,11 +8,10 @@ spec:
   interval: 5m
   upgrade:
     force: true
-    disableHooks: true
   chart:
     spec:
       chart: longhorn
-      version: 1.11.0
+      version: 1.10.0
       sourceRef:
         kind: HelmRepository
         name: longhorn
@@ -39,7 +38,6 @@ spec:
   #   longhornUI:
   #     replicas: 1
   values:
-    upgradeVersionCheck: false
     ingress:
       enabled: true
       host: "longhorn.${domain}"
@@ -73,8 +71,6 @@ spec:
       # force single replica per volume
       defaultReplicaCount: "1"
 
-      allowDowngrade: "true"
-
       # reduce background rebuilds that consume RAM/CPU
       replicaAutoBalance: "disabled"
       autoSalvage: "false"
@@ -101,12 +97,6 @@ spec:
     #     operator: Exists
     #     effect: NoSchedule
 
-    image:
-      longhorn:
-        manager:
-          repository: longhornio/longhorn-manager
-          tag: v1.11.0-hotfix-1
-
     manager:
       resources:
         limits:
@@ -117,9 +107,6 @@ spec:
           memory: "256Mi"
 
     instanceManager:
-      image:
-        repository: longhornio/longhorn-instance-manager
-        tag: v1.11.0-hotfix-1
       resources:
         limits:
           cpu: "500m"
