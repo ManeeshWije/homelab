@@ -56,3 +56,6 @@ spec:
       config:
         enabled: true
         existingClaim: seerr-config
+        globalMounts:
+          - path: /app/config
+            readOnly: false
