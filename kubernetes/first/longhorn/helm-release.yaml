@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: longhorn
-      version: 1.10.0
+      version: 1.11.0
       sourceRef:
         kind: HelmRepository
         name: longhorn
@@ -38,6 +38,7 @@ spec:
   #   longhornUI:
   #     replicas: 1
   values:
+    upgradeVersionCheck: false
     ingress:
       enabled: true
       host: "longhorn.${domain}"
@@ -97,6 +98,12 @@ spec:
     #     operator: Exists
     #     effect: NoSchedule
 
+    image:
+      longhorn:
+        manager:
+          repository: longhornio/longhorn-manager
+          tag: v1.11.0-hotfix-1
+
     manager:
       resources:
         limits:
@@ -107,6 +114,9 @@ spec:
           memory: "256Mi"
 
     instanceManager:
+      image:
+        repository: longhornio/longhorn-instance-manager
+        tag: v1.11.0-hotfix-1
       resources:
         limits:
           cpu: "500m"
