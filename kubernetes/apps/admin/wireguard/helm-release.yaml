@@ -26,6 +26,18 @@ spec:
       PASSWORD_HASH: ${wg_password_hash}
       WG_DEFAULT_DNS: ${pihole_host}
 
+    # This will enable IP forwarding and NAT masquerading
+    # This is required for the VPN to work in full tunnel mode
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Enabling IP forwarding"
+        sysctl -w net.ipv4.ip_forward=1
+        iptables -t nat -F POSTROUTING
+        iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+        exec node server.js
+
     securityContext:
       container:
         PUID: 0
