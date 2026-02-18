@@ -27,6 +27,10 @@ data:
                     url: https://watch.${domain}
                     check-url: http://watch-together.projects.svc.cluster.local:8080
                     same-tab: true
+                  - title: pihole
+                    icon: sh:piholevault-light
+                    url: https://pihole.${domain}/admin
+                    same-tab: true
                   - title: seerr
                     icon: sh:seerr-light
                     url: https://discover.${domain}
