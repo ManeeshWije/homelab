@@ -54,7 +54,7 @@ spec:
 
     service:
       type: LoadBalancer
-      loadBalancerIP: ${wg_host}
+      loadBalancerIP: ${traefik_load_balancer_ip}
       externalTrafficPolicy: Local
 
     volume:
