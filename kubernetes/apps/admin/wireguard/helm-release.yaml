@@ -22,9 +22,11 @@ spec:
     image:
       repository: ghcr.io/wg-easy/wg-easy
     environmentVariables:
-      WG_HOST: ${wg_host}
-      PASSWORD_HASH: ${wg_password_hash}
       INIT_ENABLED: "true"
+      INIT_USERNAME: ${wg_user}
+      INIT_PASSWORD: ${wg_pass}
+      INIT_HOST: ${wg_host}
+      INIT_PORT: 51820
       INIT_DNS: ${pihole_host}
 
     securityContext:
