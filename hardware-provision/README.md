@@ -13,7 +13,7 @@
     sudo systemctl start iscsid
     sudo apt install -y nfs-common
     ```
-- dnsmasq config
+- dnsmasq config (dont need this anymore since I'm running pihole as our dns server, but this is what I had before)
     ```
     port=53
     domain-needed
