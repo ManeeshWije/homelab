@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: longhorn
-      version: 1.9.2
+      version: 1.10.2
       sourceRef:
         kind: HelmRepository
         name: longhorn
@@ -22,8 +22,8 @@ spec:
       enabled: true
       host: "longhorn.${domain}"
       annotations:
-        # traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd,longhorn-system-svc-longhorn-headers@kubernetescrd"
-        traefik.ingress.kubernetes.io/router.middlewares: "longhorn-system-svc-longhorn-headers@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.middlewares: "admin-forwardauth-authelia@kubernetescrd,longhorn-system-svc-longhorn-headers@kubernetescrd"
+        # traefik.ingress.kubernetes.io/router.middlewares: "longhorn-system-svc-longhorn-headers@kubernetescrd"
 
     persistence:
       reclaimPolicy: Retain
