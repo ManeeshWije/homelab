@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pihole-config
-  namespace: utils
+  namespace: admin
 spec:
   accessModes:
     - ReadWriteOnce
