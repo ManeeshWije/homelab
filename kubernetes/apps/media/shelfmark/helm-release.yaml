@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/calibrain/shelfmark-lite
-              tag: v1.1.1
+              tag: v1.1.2
             securityContext:
               fsGroup: 0
               runAsUser: 0
