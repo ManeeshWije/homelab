@@ -31,6 +31,8 @@ spec:
               runAsGroup: 0
               fsGroupChangePolicy: "Always"
             env:
+              PGUID: 0
+              PGID: 0
               lidarr_address: "http://lidarr.media.svc.cluster.local:8686"
               lidarr_api_key: "${lidarr_api_key}"
               fallback_to_top_result: true
