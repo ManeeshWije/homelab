@@ -73,7 +73,7 @@ spec:
         volumeSpec:
           nfs:
             server: "${storage_host_ip}"
-            path: /gargantua/Downloads
+            path: /gargantua/music
         globalMounts:
           - path: /lidatube/downloads
             readOnly: false
