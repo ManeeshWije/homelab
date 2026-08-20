@@ -1,3 +1,5 @@
+# THIS HOMELAB IS SUPERSEDED BY THIS PROJECT INSTEAD [nix-config](https://github.com/ManeeshWije/nix-config)
+
 # Kubernetes Homelab
 
 > This homelab is heavily inspired by https://github.com/WolfeCub/home-ops
